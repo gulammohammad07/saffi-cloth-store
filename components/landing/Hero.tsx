@@ -53,21 +53,21 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
   const tablet =
     showImage && banner?.tabletImageUrl
       ? getImageProps({
-          ...shared,
-          src: banner.tabletImageUrl,
-          width: 1024,
-          height: 1366,
-        })
+        ...shared,
+        src: banner.tabletImageUrl,
+        width: 1024,
+        height: 1366,
+      })
       : null;
 
   const mobile =
     showImage && banner?.mobileImageUrl
       ? getImageProps({
-          ...shared,
-          src: banner.mobileImageUrl,
-          width: 828,
-          height: 1472,
-        })
+        ...shared,
+        src: banner.mobileImageUrl,
+        width: 828,
+        height: 1472,
+      })
       : null;
 
   // Mutually exclusive media queries, reused for both <source> and the
@@ -76,9 +76,9 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
     mobile ? { media: "(max-width: 767px)", srcSet: mobile.props.srcSet } : null,
     tablet
       ? {
-          media: "(min-width: 768px) and (max-width: 1023px)",
-          srcSet: tablet.props.srcSet,
-        }
+        media: "(min-width: 768px) and (max-width: 1023px)",
+        srcSet: tablet.props.srcSet,
+      }
       : null,
   ].filter((v): v is { media: string; srcSet: string } => Boolean(v?.srcSet));
 

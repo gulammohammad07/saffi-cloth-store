@@ -110,11 +110,10 @@ export default function SearchOverlay({
                 <button
                   type="button"
                   onClick={startVoiceSearch}
-                  className={`rounded-full p-2 transition-colors ${
-                    listening
+                  className={`rounded-full p-2 transition-colors ${listening
                       ? "bg-gold text-white"
                       : "text-cream/60 hover:text-gold"
-                  }`}
+                    }`}
                   aria-label="Voice search"
                 >
                   <Mic size={18} />
