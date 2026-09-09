@@ -22,21 +22,21 @@ const columns = [
   {
     title: "Company",
     links: [
-      { label: "Our Story", href: "/#story" },
-      { label: "Craftsmanship", href: "/#craft" },
-      { label: "Journal", href: "/#journal" },
-      { label: "Sustainability", href: "/#story" },
-      { label: "Careers", href: "/#story" },
+      { label: "Our Story", href: "/story" },
+      { label: "Craftsmanship", href: "/craftsmanship" },
+      { label: "Journal", href: "/journal" },
+      { label: "Sustainability", href: "/sustainability" },
+      { label: "Careers", href: "/careers" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Contact Us", href: "/account" },
-      { label: "Shipping & Delivery", href: "/account" },
-      { label: "Returns & Exchanges", href: "/account" },
-      { label: "Track Order", href: "/account" },
-      { label: "FAQs", href: "/account" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Shipping & Delivery", href: "/shipping" },
+      { label: "Returns & Exchanges", href: "/returns" },
+      { label: "Track Order", href: "/track-order" },
+      { label: "FAQs", href: "/faqs" },
     ],
   },
 ];
@@ -151,12 +151,12 @@ export default function Footer({
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 py-8 text-xs text-cream-dark/30 sm:flex-row">
           <p>© {new Date().getFullYear()} Libaas. All rights reserved.</p>
           <div className="flex items-center gap-8">
-            <a href="#" className="transition-colors duration-300 hover:text-gold">
+            <Link href="/privacy-policy" className="transition-colors duration-300 hover:text-gold">
               Privacy Policy
-            </a>
-            <a href="#" className="transition-colors duration-300 hover:text-gold">
+            </Link>
+            <Link href="/terms-of-service" className="transition-colors duration-300 hover:text-gold">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
