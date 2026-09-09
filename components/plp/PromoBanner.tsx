@@ -12,13 +12,13 @@ export default function PromoBanner({ products }: { products: Product[] }) {
   if (products.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#f0f7fb] py-24 sm:py-36">
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] bg-[radial-gradient(circle,rgba(201,169,110,0.1),transparent_70%)]" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[400px] w-[400px] bg-[radial-gradient(circle,rgba(142,201,232,0.08),transparent_70%)]" />
+    <section className="relative overflow-hidden bg-[#ECE5D8] py-24 sm:py-36">
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] bg-[radial-gradient(circle,rgba(188,78,34,0.1),transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[400px] w-[400px] bg-[radial-gradient(circle,rgba(221,139,95,0.08),transparent_70%)]" />
 
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-10 right-4 font-display text-[16rem] leading-none font-semibold text-[#174a63]/[0.04] sm:text-[24rem]"
+        className="pointer-events-none absolute -top-10 right-4 hidden font-display text-9xl leading-none font-semibold text-ink/[0.04] sm:block"
       >
         02
       </span>
@@ -32,12 +32,12 @@ export default function PromoBanner({ products }: { products: Product[] }) {
         >
           <div className="flex items-center gap-5">
             <span className="h-px w-14 bg-gold" />
-            <p className="text-[11px] font-semibold tracking-[0.34em] text-gold uppercase">
+            <p className="text-xs font-semibold tracking-[0.34em] text-gold uppercase">
               The Edit · No. 04
             </p>
           </div>
 
-          <h2 className="mt-8 font-display text-5xl font-medium leading-[0.96] tracking-tight text-[#0f2838] sm:text-7xl">
+          <h2 className="mt-8 font-display text-5xl font-medium leading-[0.96] tracking-tight text-ink sm:text-7xl">
             The{" "}
             <span className="gold-gradient-text animate-shine italic motion-reduce:animate-none">
               Oud
@@ -45,15 +45,15 @@ export default function PromoBanner({ products }: { products: Product[] }) {
             Edit
           </h2>
 
-          <p className="mt-8 max-w-md text-[15px] leading-[1.7] text-[#5f7788]/60">
-            Aged in darkness, poured at dawn. Our most coveted resins —
-            distilled to their purest essence and bottled for those who wear
-            rarity with ease.
+          <p className="mt-8 max-w-md text-base leading-[1.7] text-mute">
+            Curated for the new season — premium fabrics,
+            distilled into silhouettes for those who wear
+            comfort with ease.
           </p>
 
           <Link
             href="/shop"
-            className="group mt-11 inline-flex items-center gap-3.5 border-b border-[#e0ecf2] pb-3 text-xs font-semibold tracking-[0.24em] text-[#0f2838]/70 uppercase transition-all duration-700 hover:border-gold hover:text-gold"
+            className="group mt-11 inline-flex items-center gap-3.5 border-b border-[#E3DACB] pb-3 text-xs font-semibold tracking-[0.24em] text-ink/60 uppercase transition-all duration-700 hover:border-gold hover:text-gold"
           >
             Discover the Edit
             <ArrowUpRight
@@ -70,7 +70,7 @@ export default function PromoBanner({ products }: { products: Product[] }) {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto h-[420px] w-full max-w-md sm:h-[540px]"
         >
-          <div className="absolute left-[6%] top-[6%] h-[82%] w-[62%] -rotate-6 overflow-hidden rounded-[2.5rem] border border-[#e0ecf2] bg-white shadow-[0_50px_100px_-30px_rgba(15,40,56,0.15)] backdrop-blur-xl">
+          <div className="absolute left-[6%] top-[6%] h-[82%] w-[62%] -rotate-6 overflow-hidden rounded-[2.5rem] border border-[#E3DACB] bg-white shadow-[0_50px_100px_-30px_rgba(19,17,16,0.15)] backdrop-blur-xl">
             {second && (
               <div className="relative h-full w-full">
                 <Image
@@ -81,7 +81,7 @@ export default function PromoBanner({ products }: { products: Product[] }) {
                   className="object-contain p-10"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 to-transparent p-5 pt-16">
-                  <p className="font-display text-lg font-semibold text-[#0f2838]">
+                  <p className="font-display text-base font-semibold text-ink">
                     {second.name}
                   </p>
                 </div>
@@ -89,7 +89,7 @@ export default function PromoBanner({ products }: { products: Product[] }) {
             )}
           </div>
 
-          <div className="absolute right-0 top-[16%] h-[78%] w-[58%] rotate-6 overflow-hidden rounded-[2.5rem] border border-gold/25 bg-white shadow-[0_60px_120px_-40px_rgba(201,169,110,0.3)]">
+          <div className="absolute right-0 top-[16%] h-[78%] w-[58%] rotate-6 overflow-hidden rounded-[2.5rem] border border-gold/25 bg-white shadow-[0_60px_120px_-40px_rgba(188,78,34,0.3)]">
             {first && (
               <div className="relative h-full w-full">
                 <Image
@@ -99,8 +99,8 @@ export default function PromoBanner({ products }: { products: Product[] }) {
                   sizes="(max-width: 1024px) 80vw, 380px"
                   className="object-contain p-10"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#f8fcfe] to-transparent p-5 pt-16">
-                  <p className="font-display text-lg font-semibold text-[#0f2838]">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#F4EFE6] to-transparent p-5 pt-16">
+                  <p className="font-display text-base font-semibold text-ink">
                     {first.name}
                   </p>
                 </div>
@@ -116,8 +116,8 @@ export default function PromoBanner({ products }: { products: Product[] }) {
             <p className="font-display text-3xl font-semibold text-gold">
               12
             </p>
-            <p className="mt-1 text-[9px] font-semibold tracking-[0.2em] text-[#5f7788]/60 uppercase">
-              Bottles Per Batch
+            <p className="mt-1 text-xs font-semibold tracking-[0.2em] text-mute uppercase">
+              Pieces Per Drop
             </p>
           </motion.div>
         </motion.div>

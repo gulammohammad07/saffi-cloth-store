@@ -21,7 +21,7 @@ export default function TrendingNow({ products }: { products: Product[] }) {
   };
 
   return (
-    <section className="bg-[#faf9f7] py-24 sm:py-32">
+    <section className="bg-[#F3EEE5] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,10 +31,10 @@ export default function TrendingNow({ products }: { products: Product[] }) {
           className="mb-14 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.34em] text-gold uppercase">
+            <p className="text-xs font-semibold tracking-[0.34em] text-gold uppercase">
               Most Coveted
             </p>
-            <h2 className="mt-4 font-display text-5xl font-medium tracking-tight text-[#0f2838] sm:text-6xl">
+            <h2 className="mt-4 font-display text-5xl font-medium tracking-tight text-ink sm:text-6xl">
               Trending Now
             </h2>
           </div>
@@ -44,7 +44,7 @@ export default function TrendingNow({ products }: { products: Product[] }) {
               type="button"
               onClick={() => scroll(-1)}
               aria-label="Scroll left"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-[#5f7788] transition-all duration-500 hover:border-gold hover:bg-gold hover:text-[#0a1b26]"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-mute transition-all duration-500 hover:border-gold hover:bg-gold hover:text-ink"
             >
               <ChevronLeft size={18} />
             </button>
@@ -52,7 +52,7 @@ export default function TrendingNow({ products }: { products: Product[] }) {
               type="button"
               onClick={() => scroll(1)}
               aria-label="Scroll right"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-[#5f7788] transition-all duration-500 hover:border-gold hover:bg-gold hover:text-[#0a1b26]"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-mute transition-all duration-500 hover:border-gold hover:bg-gold hover:text-ink"
             >
               <ChevronRight size={18} />
             </button>
@@ -73,8 +73,8 @@ export default function TrendingNow({ products }: { products: Product[] }) {
               className="group w-[300px] shrink-0 snap-start sm:w-[340px]"
             >
               <Link href={`/product/${product.slug}`} className="block">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-[#e0ecf2] bg-gradient-to-b from-[#f0f7fb] to-[#faf9f7] shadow-[0_20px_50px_-18px_rgba(15,40,56,0.12)] transition-all duration-700 group-hover:-translate-y-3 group-hover:border-gold/40 group-hover:shadow-[0_40px_80px_-24px_rgba(201,169,110,0.3)]">
-                  <span className="absolute left-6 top-5 z-10 font-display text-6xl font-semibold text-gold/20">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-[#E3DACB] bg-gradient-to-b from-[#ECE5D8] to-[#F3EEE5] shadow-[0_20px_50px_-18px_rgba(19,17,16,0.12)] transition-all duration-700 group-hover:-translate-y-3 group-hover:border-gold/40 group-hover:shadow-[0_40px_80px_-24px_rgba(188,78,34,0.3)]">
+                  <span className="absolute left-6 top-5 z-10 font-display text-6xl font-semibold text-gold/30">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -95,13 +95,13 @@ export default function TrendingNow({ products }: { products: Product[] }) {
                       toast.success(`${product.name} added to bag`);
                     }}
                     aria-label={`Add ${product.name} to bag`}
-                    className="absolute bottom-5 right-5 z-10 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-[#0f2838] text-white opacity-0 shadow-xl transition-all duration-700 hover:bg-gold hover:text-[#0a1b26] group-hover:translate-y-0 group-hover:opacity-100"
+                    className="absolute bottom-5 right-5 z-10 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-[#131110] text-white opacity-0 shadow-xl transition-all duration-700 hover:bg-gold hover:text-ink group-hover:translate-y-0 group-hover:opacity-100"
                   >
                     <Plus size={18} />
                   </button>
 
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-[#f8fcfe]/60 to-transparent p-6 pt-16 backdrop-blur-[4px]">
-                    <p className="font-display text-xl font-semibold text-[#0f2838]">
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-[#F4EFE6]/60 to-transparent p-6 pt-16 backdrop-blur-[4px]">
+                    <p className="font-display text-xl font-semibold text-ink">
                       {product.name}
                     </p>
                     <p className="mt-1.5 text-sm text-gold">

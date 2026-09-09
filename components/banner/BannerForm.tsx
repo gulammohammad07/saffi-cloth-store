@@ -104,7 +104,7 @@ export default function BannerForm({
             name="title"
             defaultValue={initial?.title ?? ""}
             className="w-full rounded-lg border p-3"
-            placeholder="Signature Attar"
+            placeholder="New Season Drop"
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function BannerForm({
             name="subtitle"
             defaultValue={initial?.subtitle ?? ""}
             className="w-full rounded-lg border p-3"
-            placeholder="The Art of Oriental Fragrance"
+            placeholder="Where Style Meets Comfort"
           />
         </div>
 
@@ -125,7 +125,7 @@ export default function BannerForm({
             defaultValue={initial?.description ?? ""}
             className="w-full rounded-lg border p-3"
             rows={3}
-            placeholder="A curated collection of rare ouds and oriental fragrances..."
+            placeholder="Premium clothing for men, women and kids..."
           />
         </div>
 

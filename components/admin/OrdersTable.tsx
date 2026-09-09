@@ -246,7 +246,7 @@ export default function OrdersTable({
         >
           Deleted
           {hiddenCount > 0 && (
-            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-600">
+            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-600">
               {hiddenCount}
             </span>
           )}
@@ -430,7 +430,7 @@ export default function OrdersTable({
                     </td>
                     <td className="px-4 py-4">
                       {order.occasion ? (
-                        <span className="inline-block rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-amber-700 uppercase">
+                        <span className="inline-block rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold tracking-wide text-amber-700 uppercase">
                           {order.occasion}
                         </span>
                       ) : (
@@ -462,7 +462,7 @@ export default function OrdersTable({
                     </td>
                     <td className="px-4 py-4">
                       <span
-                        className={`inline-block rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide uppercase ${
+                        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${
                           PAYMENT_BADGE[order.paymentStatus] ??
                           "bg-gray-100 text-gray-600"
                         }`}

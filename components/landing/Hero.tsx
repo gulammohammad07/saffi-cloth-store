@@ -35,8 +35,8 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
    */
   const shared = {
     alt: banner?.title
-      ? `${banner.title} — Danish Perfumes`
-      : "Danish Perfumes attar collection",
+      ? `${banner.title} — Libaas`
+      : "Libaas clothing collection",
     sizes: "100vw",
     quality: 75,
     priority: true,
@@ -89,7 +89,7 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
       : undefined;
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-[#0a1b26]">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-[#0D0B09]">
       {desktop ? (
         <>
           {variants.map((v) => (
@@ -132,16 +132,16 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
 
             {/* Scrim so the white headline stays legible over any banner the
                 admin uploads, however light it happens to be. */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1b26]/90 via-[#0a1b26]/65 to-[#0a1b26]/45" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B09]/90 via-[#0D0B09]/65 to-[#0D0B09]/45" />
           </div>
         </>
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1b26] via-[#123246] to-[#174A63]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0D0B09] via-[#181512] to-[#1C1A17]" />
       )}
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(201,169,110,0.18),transparent_70%)]" />
-        <div className="absolute left-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(142,201,232,0.12),transparent_70%)]" />
+        <div className="absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(188,78,34,0.18),transparent_70%)]" />
+        <div className="absolute left-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(221,139,95,0.12),transparent_70%)]" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-28 text-center lg:py-32">
@@ -150,31 +150,31 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
             unpaintable until the motion bundle hydrates, which cost us over a
             second of LCP on a throttled connection. */}
         <div className="animate-rise-in">
-          {banner?.subtitle && (
-            <p className="text-[11px] font-semibold tracking-[0.4em] text-gold uppercase">
-              {banner.subtitle}
+          {(banner?.subtitle ?? "Modern Essentials — Est. 2025") && (
+            <p className="text-xs font-semibold tracking-[0.22em] text-gold">
+              {banner?.subtitle ?? "Modern Essentials — Est. 2025"}
             </p>
           )}
 
-          {banner?.title && (
-            <h1 className="mt-8 font-display text-[3.2rem] font-medium leading-[0.98] tracking-tight text-[#fff] sm:text-7xl lg:text-[7.5rem]">
-              {banner.title}
+          {(banner?.title ?? "Wear Your Story") && (
+            <h1 className="mt-8 font-display text-5xl font-medium leading-[0.98] tracking-tight text-white sm:text-7xl lg:text-9xl">
+              {banner?.title ?? "Wear Your Story"}
             </h1>
           )}
 
-          {banner?.description && (
-            <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-[#dceff7]/90 sm:text-lg">
-              {banner.description}
+          {(banner?.description ?? "Premium everyday wear for men, women and kids — cut in India, designed to last.") && (
+            <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-cream-dark sm:text-base">
+              {banner?.description ?? "Premium everyday wear for men, women and kids — cut in India, designed to last."}
             </p>
           )}
 
-          <div className="mt-12 flex flex-col items-center justify-center gap-5">
+          <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-4">
             {/* /shop pulls a heavy route chunk — don't let the viewport
                 prefetch it inside the LCP/load window. */}
             <Link
               href="/shop"
               prefetch={false}
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#c9a96e] via-[#e2cc9c] to-[#c9a96e] px-10 py-4.5 text-sm font-semibold tracking-[0.15em] text-[#0a1b26] shadow-[0_0_60px_rgba(201,169,110,0.35)] transition-all duration-700 hover:shadow-[0_0_80px_rgba(201,169,110,0.5)] hover:scale-[1.04]"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#BC4E22] via-[#E09A72] to-[#BC4E22] px-10 py-4.5 text-sm font-semibold tracking-[0.15em] text-ink shadow-[0_0_60px_rgba(188,78,34,0.35)] transition-all duration-700 hover:shadow-[0_0_80px_rgba(188,78,34,0.5)] hover:scale-[1.04]"
             >
               <span className="relative z-10 flex items-center gap-2.5">
                 Explore Collection
@@ -189,9 +189,9 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
             <Link
               href="/shop"
               prefetch={false}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#174A63]/20 bg-[#fff] px-7 py-3.5 text-[11px] font-semibold tracking-[0.25em] text-[#174A63] uppercase transition-colors duration-500 hover:border-gold/60 hover:text-[#0a1b26]"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-ink/20 bg-white px-8 py-3.5 text-sm font-medium tracking-wide text-ink transition-colors duration-500 hover:border-gold/60 hover:text-charcoal"
             >
-              View All Fragrances
+              View all clothing
             </Link>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function Hero({ banner }: { banner?: HeroBanner }) {
 
       {/* Mouse-shaped scroll hint — desktop only; it clutters small screens */}
       <div className="animate-fade-in-slow absolute bottom-10 left-1/2 hidden -translate-x-1/2 sm:block">
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-[#e0ecf2]">
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-[#E3DACB]">
           <div className="animate-scroll-hint mt-2 h-2 w-1 rounded-full bg-gold" />
         </div>
       </div>

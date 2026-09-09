@@ -163,7 +163,7 @@ export default function GalleryUploader({
                 alt={`Gallery image ${index + 1}`}
                 className="h-full w-full object-cover"
               />
-              <span className="absolute left-2 top-2 rounded bg-black/60 px-1.5 py-0.5 text-[10px] font-medium text-white">
+              <span className="absolute left-2 top-2 rounded bg-black/60 px-1.5 py-0.5 text-xs font-medium text-white">
                 {index + 1}
               </span>
               <button
@@ -190,14 +190,14 @@ export default function GalleryUploader({
               className={cn(
                 "flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed bg-gray-50 text-sm font-medium text-gray-500 transition-colors",
                 dragging
-                  ? "border-black bg-gray-100 text-black"
+                  ? "border-black bg-gray-100 text-ink"
                   : "border-black/20 hover:border-black/50",
               )}
             >
               <span
                 className={cn(
                   "flex h-10 w-10 items-center justify-center rounded-full transition-colors",
-                  dragging ? "bg-black text-white" : "bg-black/5 text-black",
+                  dragging ? "bg-black text-white" : "bg-black/5 text-ink",
                 )}
               >
                 <ImagePlus size={20} />
@@ -228,7 +228,7 @@ export default function GalleryUploader({
           <span
             className={cn(
               "flex h-12 w-12 items-center justify-center rounded-full transition-colors",
-              dragging ? "bg-black text-white" : "bg-black/5 text-black",
+              dragging ? "bg-black text-white" : "bg-black/5 text-ink",
             )}
           >
             <ImagePlus size={22} />
@@ -244,7 +244,7 @@ export default function GalleryUploader({
 
       {uploading && (
         <div className="mt-3 flex items-center gap-3 rounded-xl border border-black/10 bg-gray-50 px-4 py-3">
-          <Loader2 size={18} className="animate-spin text-black" />
+          <Loader2 size={18} className="animate-spin text-ink" />
           <div className="h-2 flex-1 overflow-hidden rounded-full bg-gray-200">
             <div
               className="h-full bg-black transition-all duration-150"

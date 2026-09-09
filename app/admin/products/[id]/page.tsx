@@ -59,7 +59,7 @@ export default async function EditProductPage({
           categoryId: product.categoryId,
           brandId: product.brandId,
           occasionIds: product.occasions.map((o) => o.id),
-          productType: product.productType as "ATTAR" | "PERFUME",
+          productType: product.productType as "MEN" | "WOMEN" | "KIDS",
           sizes: product.sizes.map((s) => ({
             id: s.id,
             size: s.size,

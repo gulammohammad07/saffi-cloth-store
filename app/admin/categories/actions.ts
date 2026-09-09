@@ -204,10 +204,26 @@ export type ResetCategoriesState = {
 };
 
 export async function resetCategories(): Promise<ResetCategoriesState> {
+  // Clothing defaults: categories are garment types (gender lives on the
+  // product as productType MEN/WOMEN/KIDS), so one set works across the board.
   const defaultCategories = [
-    { name: "Men", slug: "men", description: "Masculine fragrances" },
-    { name: "Women", slug: "women", description: "Feminine fragrances" },
-    { name: "Unisex", slug: "unisex", description: "For everyone" },
+    { name: "T-Shirts", slug: "t-shirts", description: "Casual everyday tees in soft cotton." },
+    { name: "Shirts", slug: "shirts", description: "Smart-casual shirts for work and weekends." },
+    { name: "Polo Shirts", slug: "polo-shirts", description: "Classic polos — sporty yet polished." },
+    { name: "Kurtas", slug: "kurtas", description: "Breathable everyday kurtas, made to last." },
+    { name: "Kurta Sets", slug: "kurta-sets", description: "Festive-ready kurta sets in easy fabrics." },
+    { name: "Jeans", slug: "jeans", description: "Denim that holds its shape wear after wear." },
+    { name: "Trousers & Chinos", slug: "trousers-chinos", description: "Sharp trousers and relaxed chinos." },
+    { name: "Shorts", slug: "shorts", description: "Easy shorts for warm days." },
+    { name: "Dresses", slug: "dresses", description: "Effortless dresses for every occasion." },
+    { name: "Tops & Blouses", slug: "tops-blouses", description: "Versatile tops and blouses to style up." },
+    { name: "Ethnic Wear", slug: "ethnic-wear", description: "Traditional silhouettes, modern comfort." },
+    { name: "Sarees & Lehengas", slug: "sarees-lehengas", description: "Graceful sarees and lehengas for celebrations." },
+    { name: "Co-ord Sets", slug: "coord-sets", description: "Matched sets — zero-effort dressing." },
+    { name: "Sweatshirts & Hoodies", slug: "sweatshirts-hoodies", description: "Cosy layers for laid-back days." },
+    { name: "Jackets & Coats", slug: "jackets-coats", description: "Outerwear built for crisp evenings." },
+    { name: "Activewear", slug: "activewear", description: "Stretchy performance wear for training days." },
+    { name: "Loungewear & Sleepwear", slug: "loungewear-sleepwear", description: "Soft at-home comfort essentials." },
   ];
 
   const created = await Promise.all(
@@ -221,11 +237,13 @@ export async function resetCategories(): Promise<ResetCategoriesState> {
   );
 
   const defaultIds = created.map((c) => c.id);
-  const menCategory = created.find((c) => c.slug === "men")!;
+  // Anything not in the default set moves to the first default category so no
+  // product is ever orphaned before the extras are cleaned up.
+  const fallbackCategory = created[0];
 
   await prisma.product.updateMany({
     where: { categoryId: { notIn: defaultIds } },
-    data: { categoryId: menCategory.id },
+    data: { categoryId: fallbackCategory.id },
   });
 
   await prisma.category.deleteMany({
@@ -238,6 +256,6 @@ export async function resetCategories(): Promise<ResetCategoriesState> {
 
   return {
     success: true,
-    message: "Categories reset to Men, Women, Unisex.",
+    message: `Categories reset to ${defaultCategories.length} clothing defaults.`,
   };
 }

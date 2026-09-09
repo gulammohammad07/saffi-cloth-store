@@ -111,13 +111,13 @@ function buildOrderEmailHtml(
     .map(
       (item) => `
         <tr>
-          <td style="padding:10px 12px;border-bottom:1px solid #e0ecf2;font-size:14px;color:#174a63;">
+          <td style="padding:10px 12px;border-bottom:1px solid #E3DACB;font-size:14px;color:#1C1A17;">
             ${escapeHtml(item.productName)}
-            <div style="font-size:12px;color:#5f7788;margin-top:2px;">
+            <div style="font-size:12px;color:#857D72;margin-top:2px;">
               ${item.quantity} × ${formatPrice(item.unitPrice)}
             </div>
           </td>
-          <td style="padding:10px 12px;border-bottom:1px solid #e0ecf2;font-size:14px;color:#174a63;text-align:right;white-space:nowrap;">
+          <td style="padding:10px 12px;border-bottom:1px solid #E3DACB;font-size:14px;color:#1C1A17;text-align:right;white-space:nowrap;">
             ${formatPrice(item.lineTotal)}
           </td>
         </tr>`,
@@ -127,13 +127,13 @@ function buildOrderEmailHtml(
   const couponLine = order.couponCode
     ? `
       <tr>
-        <td style="padding:4px 0;font-size:14px;color:#5f7788;">Discount (${escapeHtml(order.couponCode)})</td>
+        <td style="padding:4px 0;font-size:14px;color:#857D72;">Discount (${escapeHtml(order.couponCode)})</td>
         <td style="padding:4px 0;font-size:14px;color:#0f8a4d;text-align:right;">−${formatPrice(order.discountAmount)}</td>
       </tr>`
     : "";
 
   const occasionLine = order.occasion
-    ? `<div style="margin-top:8px;font-size:13px;color:#5f7788;">Occasion: <strong style="color:#174a63;">${escapeHtml(order.occasion)}</strong></div>`
+    ? `<div style="margin-top:8px;font-size:13px;color:#857D72;">Occasion: <strong style="color:#1C1A17;">${escapeHtml(order.occasion)}</strong></div>`
     : "";
 
   const adminUrl = `${getAppUrl()}/admin/orders`;
@@ -141,34 +141,34 @@ function buildOrderEmailHtml(
   return `
 <!DOCTYPE html>
 <html lang="en">
-<body style="margin:0;padding:0;background:#f8fcfe;">
+<body style="margin:0;padding:0;background:#F4EFE6;">
   <div style="margin:0 auto;max-width:640px;font-family:Arial,Helvetica,sans-serif;">
-    <div style="background:#0f2838;padding:28px 32px;">
+    <div style="background:#131110;padding:28px 32px;">
       <div style="font-size:20px;font-weight:bold;color:#ffffff;">${escapeHtml(storeName)}</div>
-      <div style="font-size:13px;color:#cfe4f0;margin-top:4px;">New order received — ${escapeHtml(order.orderNumber)}</div>
+      <div style="font-size:13px;color:#DCD2C0;margin-top:4px;">New order received — ${escapeHtml(order.orderNumber)}</div>
     </div>
 
     <div style="background:#ffffff;padding:32px;">
-      <p style="margin:0 0 6px;font-size:17px;font-weight:bold;color:#174a63;">
+      <p style="margin:0 0 6px;font-size:17px;font-weight:bold;color:#1C1A17;">
         Order ${escapeHtml(order.orderNumber)}
       </p>
-      <p style="margin:0 0 24px;font-size:13px;color:#5f7788;">
+      <p style="margin:0 0 24px;font-size:13px;color:#857D72;">
         Placed on ${formatDate(order.createdAt)} · ${paymentMethodLabel(order.paymentMethod)} · Payment ${statusLabel(order.paymentStatus)} · Status ${statusLabel(order.status)}
       </p>
 
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
         <tr>
           <td style="width:50%;vertical-align:top;padding:0 16px 20px 0;">
-            <div style="font-size:12px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#5f7788;margin-bottom:8px;">Customer</div>
-            <div style="font-size:14px;color:#174a63;line-height:1.6;">${escapeHtml(order.customerName)}</div>
-            <div style="font-size:13px;color:#5f7788;line-height:1.6;">
-              <a href="mailto:${escapeHtml(order.customerEmail)}" style="color:#c9a96e;">${escapeHtml(order.customerEmail)}</a><br />
+            <div style="font-size:12px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#857D72;margin-bottom:8px;">Customer</div>
+            <div style="font-size:14px;color:#1C1A17;line-height:1.6;">${escapeHtml(order.customerName)}</div>
+            <div style="font-size:13px;color:#857D72;line-height:1.6;">
+              <a href="mailto:${escapeHtml(order.customerEmail)}" style="color:#BC4E22;">${escapeHtml(order.customerEmail)}</a><br />
               ${escapeHtml(order.customerPhone)}
             </div>
           </td>
           <td style="width:50%;vertical-align:top;padding:0 0 20px 16px;">
-            <div style="font-size:12px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#5f7788;margin-bottom:8px;">Ship to</div>
-            <div style="font-size:13px;color:#174a63;line-height:1.6;">
+            <div style="font-size:12px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#857D72;margin-bottom:8px;">Ship to</div>
+            <div style="font-size:13px;color:#1C1A17;line-height:1.6;">
               ${escapeHtml(order.customerName)}<br />
               ${escapeHtml(order.street)}<br />
               ${escapeHtml(order.city)}, ${escapeHtml(order.state)} — ${escapeHtml(order.pincode)}<br />
@@ -179,36 +179,36 @@ function buildOrderEmailHtml(
         </tr>
       </table>
 
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #e0ecf2;border-radius:12px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #E3DACB;border-radius:12px;">
         <tr>
-          <th align="left" style="padding:10px 12px;font-size:11px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#5f7788;border-bottom:1px solid #e0ecf2;">Item</th>
-          <th align="right" style="padding:10px 12px;font-size:11px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#5f7788;border-bottom:1px solid #e0ecf2;">Amount</th>
+          <th align="left" style="padding:10px 12px;font-size:11px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#857D72;border-bottom:1px solid #E3DACB;">Item</th>
+          <th align="right" style="padding:10px 12px;font-size:11px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;color:#857D72;border-bottom:1px solid #E3DACB;">Amount</th>
         </tr>
         ${rows}
       </table>
 
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-top:16px;">
         <tr>
-          <td style="padding:4px 0;font-size:14px;color:#5f7788;">Subtotal</td>
-          <td style="padding:4px 0;font-size:14px;color:#174a63;text-align:right;">${formatPrice(order.subtotal)}</td>
+          <td style="padding:4px 0;font-size:14px;color:#857D72;">Subtotal</td>
+          <td style="padding:4px 0;font-size:14px;color:#1C1A17;text-align:right;">${formatPrice(order.subtotal)}</td>
         </tr>
         <tr>
-          <td style="padding:4px 0;font-size:14px;color:#5f7788;">Shipping</td>
-          <td style="padding:4px 0;font-size:14px;color:#174a63;text-align:right;">${order.shippingFee === 0 ? "Free" : formatPrice(order.shippingFee)}</td>
+          <td style="padding:4px 0;font-size:14px;color:#857D72;">Shipping</td>
+          <td style="padding:4px 0;font-size:14px;color:#1C1A17;text-align:right;">${order.shippingFee === 0 ? "Free" : formatPrice(order.shippingFee)}</td>
         </tr>
         ${couponLine}
         <tr>
-          <td style="padding:12px 0 4px;font-size:16px;font-weight:bold;color:#174a63;">Total</td>
-          <td style="padding:12px 0 4px;font-size:18px;font-weight:bold;color:#c9a96e;text-align:right;">${formatPrice(order.total)}</td>
+          <td style="padding:12px 0 4px;font-size:16px;font-weight:bold;color:#1C1A17;">Total</td>
+          <td style="padding:12px 0 4px;font-size:18px;font-weight:bold;color:#BC4E22;text-align:right;">${formatPrice(order.total)}</td>
         </tr>
       </table>
 
       <div style="margin-top:28px;text-align:center;">
-        <a href="${adminUrl}" style="display:inline-block;padding:12px 28px;border-radius:999px;background:#174a63;color:#ffffff;font-size:14px;font-weight:bold;text-decoration:none;">View order in admin</a>
+        <a href="${adminUrl}" style="display:inline-block;padding:12px 28px;border-radius:999px;background:#1C1A17;color:#ffffff;font-size:14px;font-weight:bold;text-decoration:none;">View order in admin</a>
       </div>
     </div>
 
-    <div style="padding:20px 32px;text-align:center;font-size:12px;color:#5f7788;">
+    <div style="padding:20px 32px;text-align:center;font-size:12px;color:#857D72;">
       ${escapeHtml(storeName)} · This is an automatic order notification sent to the store support email.
     </div>
   </div>

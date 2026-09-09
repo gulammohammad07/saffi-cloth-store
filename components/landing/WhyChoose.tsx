@@ -22,7 +22,7 @@ type Stat = {
 
 const stats: Stat[] = [
   { value: 10, suffix: "K+", label: "Happy Clients" },
-  { value: 50, suffix: "+", label: "Rare Blends" },
+  { value: 100, suffix: "+", label: "Curated Styles" },
   { value: 8, suffix: "+", label: "Years of Craft" },
   { value: 4.9, decimals: 1, suffix: "★", label: "Avg. Rating" },
 ];
@@ -36,47 +36,47 @@ type Pillar = {
 const pillars: Pillar[] = [
   {
     icon: Gem,
-    title: "Rare Ingredients",
-    text: "Kashmiri oud, Damask rose and Mysore sandalwood — sourced directly from trusted artisans.",
+    title: "Premium Fabrics",
+    text: "Cotton, linen and blended weaves — sourced directly from trusted mills.",
   },
   {
     icon: FlaskConical,
-    title: "Hand-Poured",
-    text: "Every bottle is filled, rested and sealed by hand in small batches.",
+    title: "Easy Care",
+    text: "Machine-wash friendly fabrics that hold their shape and colour.",
   },
   {
     icon: Leaf,
-    title: "100% Pure & Alcohol-Free",
-    text: "Concentrated oils without fillers — just fragrance the way it was meant to be.",
+    title: "Honest Craft",
+    text: "Quality-checked piece by piece before it ever reaches your wardrobe.",
   },
   {
     icon: ShieldCheck,
     title: "Authenticity Guaranteed",
-    text: "Certificate of authenticity with every bottle, verified by our atelier.",
+    text: "Every garment quality-checked at our studio before it ships.",
   },
   {
     icon: Truck,
-    title: "Secure Global Delivery",
-    text: "Luxury packaging with tamper-proof seals, shipped safely to your door.",
+    title: "Fast Nationwide Delivery",
+    text: "Carefully packed and delivered to your door in 2–5 days.",
   },
   {
     icon: Award,
-    title: "Loved by Connoisseurs",
-    text: "A 4.9-star rating from thousands of collectors across the world.",
+    title: "Loved by Our Customers",
+    text: "A 4.9-star rating from thousands of shoppers across the country.",
   },
 ];
 
 export default function WhyChoose() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FCFE] py-28">
-      <div className="pointer-events-none absolute -left-32 top-24 h-[380px] w-[380px] bg-[radial-gradient(circle,rgba(201,169,110,0.14),transparent_70%)]" />
-      <div className="pointer-events-none absolute -right-24 bottom-16 h-[340px] w-[340px] bg-[radial-gradient(circle,rgba(161,135,88,0.16),transparent_70%)]" />
+    <section className="relative overflow-hidden bg-[#F4EFE6] py-28">
+      <div className="pointer-events-none absolute -left-32 top-24 h-[380px] w-[380px] bg-[radial-gradient(circle,rgba(188,78,34,0.14),transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-24 bottom-16 h-[340px] w-[340px] bg-[radial-gradient(circle,rgba(147,55,26,0.16),transparent_70%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="The MD Difference"
-          title="Why Choose Danish Perfumes"
-          description="More than fragrance — a promise of purity, patience and obsession with detail."
+          title="Why Choose Libaas"
+          description="More than clothing — a promise of quality, fit and obsession with detail."
         />
 
         {/* Animated counters */}
@@ -92,7 +92,7 @@ export default function WhyChoose() {
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
               <Counter {...stat} />
-              <p className="mt-2 text-[11px] font-semibold tracking-[0.2em] text-[#174A63]/50 uppercase">
+              <p className="mt-2 text-xs font-semibold tracking-[0.2em] text-ink/60 uppercase">
                 {stat.label}
               </p>
             </motion.div>
@@ -108,18 +108,18 @@ export default function WhyChoose() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: (i % 3) * 0.1 }}
-              className="group glass-luxury relative overflow-hidden rounded-3xl p-7 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-15px_rgba(201,169,110,0.35)]"
+              className="group glass-luxury relative overflow-hidden rounded-3xl p-7 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-15px_rgba(188,78,34,0.35)]"
             >
               <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gold/10 blur-2xl transition-all duration-500 group-hover:bg-gold/25" />
 
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/20 to-gold/5 text-gold transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(201,169,110,0.35)]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/20 to-gold/5 text-gold transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(188,78,34,0.35)]">
                 <pillar.icon size={24} strokeWidth={1.6} />
               </div>
 
-              <h3 className="mt-5 font-display text-xl font-semibold text-[#174A63]">
+              <h3 className="mt-5 font-display text-xl font-semibold text-ink">
                 {pillar.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#174A63]/55">
+              <p className="mt-2 text-sm leading-relaxed text-ink/60">
                 {pillar.text}
               </p>
             </motion.div>

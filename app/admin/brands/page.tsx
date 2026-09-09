@@ -13,7 +13,7 @@ export default async function BrandsPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Brands</h1>
-        <p className="text-gray-500">Manage your perfume brands.</p>
+        <p className="text-gray-500">Manage your clothing brands.</p>
       </div>
 
       <BrandForm />

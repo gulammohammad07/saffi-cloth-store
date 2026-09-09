@@ -38,16 +38,16 @@ export default function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.35, ease: "easeInOut" }}
-            className="fixed right-0 top-0 z-[90] flex h-full w-full max-w-md flex-col bg-[#F8FCFE] shadow-2xl"
+            className="fixed right-0 top-0 z-[90] flex h-full w-full max-w-md flex-col bg-[#F4EFE6] shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-[#174A63]/10 px-6 py-5">
-              <h2 className="font-display text-2xl font-semibold text-[#174A63]">
+            <div className="flex items-center justify-between border-b border-[#1C1A17]/10 px-6 py-5">
+              <h2 className="font-display text-2xl font-semibold text-ink">
                 Your Bag
               </h2>
               <button
                 type="button"
                 onClick={closeCart}
-                className="rounded-full p-2 text-[#174A63]/60 hover:bg-black/5"
+                className="rounded-full p-2 text-ink/60 hover:bg-black/5"
                 aria-label="Close cart"
               >
                 <X size={22} />
@@ -56,21 +56,21 @@ export default function CartDrawer() {
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-4 px-8 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#174A63]/5">
-                  <ShoppingBag size={30} className="text-[#174A63]/40" />
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1C1A17]/5">
+                  <ShoppingBag size={30} className="text-ink/60" />
                 </div>
-                <p className="text-lg font-medium text-[#174A63]">
+                <p className="text-base font-medium text-ink">
                   Your bag is empty
                 </p>
-                <p className="text-sm text-[#174A63]/50">
-                  Discover our hand-curated collection of rare attars.
+                <p className="text-sm text-ink/60">
+                  Discover our latest styles and bestsellers.
                 </p>
                 <Link
                   href="/shop"
                   onClick={closeCart}
-                  className="mt-2 rounded-full bg-[#174A63] px-6 py-3 text-sm font-medium text-white"
+                  className="mt-2 rounded-full bg-[#1C1A17] px-6 py-3 text-sm font-medium text-white"
                 >
-                  Shop Attars
+                  Shop Clothing
                 </Link>
               </div>
             ) : (
@@ -80,7 +80,7 @@ export default function CartDrawer() {
                     {items.map(({ product, quantity, size }) => (
                       <li
                         key={`${product.id}-${size ?? "default"}`}
-                        className="flex gap-4 border-b border-[#174A63]/10 pb-6"
+                        className="flex gap-4 border-b border-[#1C1A17]/10 pb-6"
                       >
                         <Link
                           href={`/product/${product.slug}`}
@@ -99,10 +99,10 @@ export default function CartDrawer() {
                         <div className="flex flex-1 flex-col">
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <p className="font-medium text-[#174A63]">
+                              <p className="font-medium text-ink">
                                 {product.name}
                               </p>
-                              <p className="text-xs text-[#174A63]/50">
+                              <p className="text-xs text-ink/60">
                                 {product.volume}
                                 {size && size !== product.volume
                                   ? ` • ${size}`
@@ -112,7 +112,7 @@ export default function CartDrawer() {
                             <button
                               type="button"
                               onClick={() => removeFromCart(product.id, size)}
-                              className="text-[#174A63]/40 hover:text-red-600"
+                              className="text-ink/60 hover:text-red-600"
                               aria-label="Remove item"
                             >
                               <Trash2 size={16} />
@@ -120,7 +120,7 @@ export default function CartDrawer() {
                           </div>
 
                           <div className="mt-auto flex items-center justify-between pt-3">
-                            <div className="flex items-center gap-3 rounded-full border border-[#174A63]/15 px-3 py-1">
+                            <div className="flex items-center gap-3 rounded-full border border-[#1C1A17]/15 px-3 py-1">
                               <button
                                 type="button"
                                 onClick={() =>
@@ -130,12 +130,12 @@ export default function CartDrawer() {
                                     size,
                                   )
                                 }
-                                className="text-[#174A63]/60"
+                                className="text-ink/60"
                                 aria-label="Decrease quantity"
                               >
                                 <Minus size={14} />
                               </button>
-                              <span className="w-5 text-center text-sm font-medium text-[#174A63]">
+                              <span className="w-5 text-center text-sm font-medium text-ink">
                                 {quantity}
                               </span>
                               <button
@@ -147,14 +147,14 @@ export default function CartDrawer() {
                                     size,
                                   )
                                 }
-                                className="text-[#174A63]/60"
+                                className="text-ink/60"
                                 aria-label="Increase quantity"
                               >
                                 <Plus size={14} />
                               </button>
                             </div>
 
-                            <p className="font-semibold text-[#174A63]">
+                            <p className="font-semibold text-ink">
                               {formatPrice(
                                 (product.salePrice ?? product.price) *
                                   quantity,
@@ -167,34 +167,34 @@ export default function CartDrawer() {
                   </ul>
                 </div>
 
-                <div className="border-t border-[#174A63]/10 px-6 py-6">
+                <div className="border-t border-[#1C1A17]/10 px-6 py-6">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-sm text-[#174A63]/60">Subtotal</span>
-                    <span className="font-semibold text-[#174A63]">
+                    <span className="text-sm text-ink/60">Subtotal</span>
+                    <span className="font-semibold text-ink">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
-                  <p className="mb-5 text-xs text-[#174A63]/40">
+                  <p className="mb-5 text-xs text-ink/60">
                     Shipping and taxes calculated at checkout.
                   </p>
                   <Link
                     href="/checkout"
                     onClick={closeCart}
-                    className="block rounded-full bg-[#174A63] py-4 text-center font-medium text-white transition-colors hover:bg-[#174A63]/90"
+                    className="block rounded-full bg-[#1C1A17] py-4 text-center font-medium text-white transition-colors hover:bg-[#1C1A17]/90"
                   >
                     Checkout — {formatPrice(subtotal)}
                   </Link>
                   <Link
                     href="/cart"
                     onClick={closeCart}
-                    className="mt-3 flex items-center justify-center gap-2 w-full rounded-full border border-[#174A63]/20 py-3 text-sm font-medium text-[#174A63]/70 transition-colors hover:border-[#174A63] hover:text-[#174A63]"
+                    className="mt-3 flex items-center justify-center gap-2 w-full rounded-full border border-[#1C1A17]/20 py-3 text-sm font-medium text-ink/60 transition-colors hover:border-[#1C1A17] hover:text-ink"
                   >
                     View Full Bag
                   </Link>
                   <button
                     type="button"
                     onClick={closeCart}
-                    className="mt-3 w-full rounded-full border border-transparent py-3 text-sm font-medium text-[#174A63]/70"
+                    className="mt-3 w-full rounded-full border border-transparent py-3 text-sm font-medium text-ink/60"
                   >
                     Continue Shopping
                   </button>

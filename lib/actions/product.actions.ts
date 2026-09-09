@@ -35,7 +35,7 @@ function parseValues(formData: FormData) {
     sku: formData.get("sku")?.toString() ?? "",
     categoryId: formData.get("categoryId")?.toString() ?? "",
     brandId: formData.get("brandId")?.toString() ?? "",
-    productType: formData.get("productType")?.toString() ?? "ATTAR",
+    productType: formData.get("productType")?.toString() ?? "MEN",
     price: formData.get("price"),
     salePrice: formData.get("salePrice"),
     stock: formData.get("stock"),

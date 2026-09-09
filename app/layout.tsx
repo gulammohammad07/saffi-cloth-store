@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/lib/store/providers";
 import { Toaster } from "@/components/ui/sonner";
 import { getStoreSettings } from "@/lib/services/settings.service";
 import { siteUrl } from "@/lib/site";
 
-const inter = Inter({
+const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -24,23 +25,23 @@ const metadataDefaults: Metadata = {
   // the canonical origin matches what robots.ts and sitemap.ts advertise.
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Danish Perfumes — Luxury Attars & Fragrances",
-    template: "%s | Danish Perfumes",
+    default: "Libaas — Premium Clothing Store",
+    template: "%s | Libaas",
   },
   description:
-    "Hand-curated luxury attars, ouds and perfumes. Discover the art of oriental fragrance with Danish Perfumes.",
+    "Hand-curated clothing for men, women and kids. Discover modern style with Libaas.",
   keywords: [
-    "attar",
-    "oud",
-    "perfume",
-    "luxury fragrance",
-    "musk",
-    "Danish Perfumes",
+    "clothing",
+    "fashion",
+    "apparel",
+    "menswear",
+    "womenswear",
+    "Libaas",
   ],
   openGraph: {
-    title: "Danish Perfumes — Luxury Attars & Fragrances",
+    title: "Libaas — Premium Clothing Store",
     description:
-      "Hand-curated luxury attars, ouds and perfumes. Discover the art of oriental fragrance.",
+      "Hand-curated clothing for men, women and kids. Discover modern style with Libaas.",
     type: "website",
   },
 };
@@ -67,9 +68,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${manrope.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F8FCFE] text-[#174A63]">
+      <body className="min-h-full flex flex-col bg-[#F4EFE6] text-ink">
         <Providers>
           <main className="flex-1">{children}</main>
           <Toaster richColors position="bottom-right" />

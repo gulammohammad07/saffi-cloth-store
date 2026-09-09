@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 const HomeSections = dynamic(() => import("@/components/landing/HomeSections"), {
   loading: () => (
     <div className="mx-auto max-w-7xl px-6 py-24">
-      <div className="h-8 w-48 animate-pulse rounded bg-[#174A63]/10" />
-      <div className="mt-6 h-4 w-72 animate-pulse rounded bg-[#174A63]/10" />
+      <div className="h-8 w-48 animate-pulse rounded bg-[#1C1A17]/10" />
+      <div className="mt-6 h-4 w-72 animate-pulse rounded bg-[#1C1A17]/10" />
     </div>
   ),
 });

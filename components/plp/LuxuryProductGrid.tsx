@@ -20,7 +20,7 @@ const PAGE_SIZE = 6;
 export default function LuxuryProductGrid({
   products,
   initialSort = "popularity",
-  sectionTitle = "Signature Attars",
+  sectionTitle = "All Clothing",
   sectionEyebrow = "The Collection",
 }: {
   products: Product[];
@@ -58,7 +58,7 @@ export default function LuxuryProductGrid({
   };
 
   return (
-    <section className="scroll-mt-24 bg-[#f8fcfe] py-24 sm:py-32">
+    <section className="scroll-mt-24 bg-[#F4EFE6] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <motion.div
@@ -67,16 +67,16 @@ export default function LuxuryProductGrid({
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-[11px] font-semibold tracking-[0.34em] text-gold uppercase">
+            <p className="text-xs font-semibold tracking-[0.34em] text-gold uppercase">
               {sectionEyebrow}
             </p>
-            <h2 className="mt-4 font-display text-5xl font-medium tracking-tight text-[#0f2838] sm:text-6xl lg:text-7xl">
+            <h2 className="mt-4 font-display text-5xl font-medium tracking-tight text-ink sm:text-6xl lg:text-7xl">
               {sectionTitle}
             </h2>
-            <p className="mt-5 text-sm text-[#5f7788]/60">
+            <p className="mt-5 text-sm text-mute">
               {sorted.length}{" "}
-              {sorted.length === 1 ? "rare blend" : "rare blends"} · hand-poured
-              &amp; ready to wear
+              {sorted.length === 1 ? "curated style" : "curated styles"} ·
+              ready to ship
             </p>
           </motion.div>
 
@@ -91,10 +91,10 @@ export default function LuxuryProductGrid({
               value={sort}
               onChange={(e) => handleSort(e.target.value as SortOption)}
               aria-label="Sort products"
-              className="cursor-pointer appearance-none rounded-full border border-gold/20 bg-white/80 py-3.5 pl-6 pr-12 text-xs font-medium tracking-[0.12em] text-[#0f2838]/70 uppercase backdrop-blur-xl transition-all duration-500 focus:border-gold/60 focus:outline-none hover:border-gold/40"
+              className="cursor-pointer appearance-none rounded-full border border-gold/20 bg-white/80 py-3.5 pl-6 pr-12 text-xs font-medium tracking-[0.12em] text-ink/60 uppercase backdrop-blur-xl transition-all duration-500 focus:border-gold/60 focus:outline-none hover:border-gold/40"
             >
               {(Object.keys(SORT_LABELS) as SortOption[]).map((key) => (
-                <option key={key} value={key} className="bg-white text-[#0f2838]">
+                <option key={key} value={key} className="bg-white text-ink">
                   {SORT_LABELS[key]}
                 </option>
               ))}
@@ -125,11 +125,11 @@ export default function LuxuryProductGrid({
           </motion.div>
         ) : (
           <div className="py-28 text-center">
-            <p className="font-display text-4xl font-medium text-[#0f2838]">
+            <p className="font-display text-3xl font-medium text-ink">
               Nothing here yet
             </p>
-            <p className="mt-4 text-sm text-[#5f7788]/50">
-              New blends are poured every season.
+            <p className="mt-4 text-sm text-mute">
+              New styles arrive every season.
             </p>
           </div>
         )}
@@ -140,10 +140,10 @@ export default function LuxuryProductGrid({
               type="button"
               onClick={() => setVisible((v) => v + PAGE_SIZE)}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-3.5 rounded-full border border-gold/40 bg-white/70 px-11 py-4.5 text-xs font-semibold tracking-[0.24em] text-[#0f2838]/70 uppercase backdrop-blur-xl transition-all duration-700 hover:border-gold hover:bg-gold hover:text-[#0a1b26] hover:shadow-[0_20px_50px_-15px_rgba(201,169,110,0.5)]"
+              className="group inline-flex items-center gap-3.5 rounded-full border border-gold/40 bg-white/70 px-11 py-4.5 text-xs font-semibold tracking-[0.24em] text-ink/60 uppercase backdrop-blur-xl transition-all duration-700 hover:border-gold hover:bg-gold hover:text-ink hover:shadow-[0_20px_50px_-15px_rgba(188,78,34,0.5)]"
             >
               Load More
-              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-gold/40 transition-colors duration-500 group-hover:border-[#0a1b26]/30">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-gold/40 transition-colors duration-500 group-hover:border-[#0D0B09]/30">
                 <ArrowDown
                   size={12}
                   className="transition-transform duration-500 group-hover:translate-y-0.5"

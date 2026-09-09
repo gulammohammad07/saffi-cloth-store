@@ -99,17 +99,17 @@ export default function ProductCard({
         <div className={cn(
           "relative overflow-hidden rounded-3xl shadow-sm transition-all duration-700 group-hover:shadow-2xl",
           dark
-            ? "border border-white/[0.06] bg-[#112d3d] group-hover:border-gold/40 group-hover:shadow-[0_30px_70px_-20px_rgba(201,169,110,0.4)]"
-            : "border border-[#e0ecf2] bg-white group-hover:border-gold/40 group-hover:shadow-[0_30px_70px_-20px_rgba(201,169,110,0.3)]"
+            ? "border border-white/[0.06] bg-[#151210] group-hover:border-gold/40 group-hover:shadow-[0_30px_70px_-20px_rgba(188,78,34,0.4)]"
+            : "border border-[#E3DACB] bg-white group-hover:border-gold/40 group-hover:shadow-[0_30px_70px_-20px_rgba(188,78,34,0.3)]"
         )}>
           {product.badge && (
             <span
               className={cn(
-                "absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase",
+                "absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-xs font-bold tracking-[0.14em] uppercase",
                 product.badge === "Sale"
                   ? "bg-red-600 text-white"
                   : product.badge === "Limited Edition"
-                    ? "bg-[#174A63] text-gold"
+                    ? "bg-[#1C1A17] text-gold"
                     : "bg-gold text-white",
               )}
             >
@@ -119,8 +119,8 @@ export default function ProductCard({
 
           {discount > 0 && product.badge !== "Sale" && (
             <span className={cn(
-              "absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold backdrop-blur",
-              dark ? "bg-[#0a1b26]/80 text-red-400" : "bg-white/90 text-red-600"
+              "absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-xs font-bold backdrop-blur",
+              dark ? "bg-[#0D0B09]/80 text-red-400" : "bg-white/90 text-red-600"
             )}>
               -{discount}%
             </span>
@@ -134,8 +134,8 @@ export default function ProductCard({
               className={cn(
                 "flex h-11 w-11 items-center justify-center rounded-full shadow backdrop-blur transition-all hover:scale-110",
                 dark
-                  ? "bg-[#0a1b26]/70 text-[#dceff7]/60 hover:text-red-400"
-                  : "bg-white/90 text-[#174A63]/50 hover:text-red-500",
+                  ? "bg-[#0D0B09]/70 text-cream-dark/60 hover:text-red-400"
+                  : "bg-white/90 text-ink/60 hover:text-red-500",
                 wished && "text-red-500",
               )}
             >
@@ -146,7 +146,7 @@ export default function ProductCard({
 
           <div className={cn(
             "relative aspect-[4/4.5] w-full overflow-hidden sm:aspect-[4/4.2]",
-            dark ? "bg-gradient-to-b from-[#122d3d] to-[#0a1b26]" : "bg-[#EFF8FC]"
+            dark ? "bg-gradient-to-b from-[#161311] to-[#0D0B09]" : "bg-[#EFE9DE]"
           )}>
             <Link
               href={`/product/${product.slug}`}
@@ -194,7 +194,7 @@ export default function ProductCard({
                 />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-1.5 z-10 flex justify-center">
-                  <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-[#0f2838]/20 px-1.5 py-0.5 shadow-sm backdrop-blur-sm">
+                  <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-[#131110]/20 px-1.5 py-0.5 shadow-sm backdrop-blur-sm">
                     {images.map((_, i) => (
                       <button
                         key={i}
@@ -226,15 +226,15 @@ export default function ProductCard({
 
           <div className={cn("p-4 sm:p-5", dark && "border-t border-white/[0.06]")}>
             <div className="flex items-center justify-between">
-              <p className="text-[10px] font-semibold tracking-[0.18em] text-gold uppercase">
+              <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">
                 {product.brand}
               </p>
               <div className="flex items-center gap-1 text-xs">
                 <Star size={12} className="fill-gold text-gold" />
-                <span className={cn("font-medium", dark ? "text-[#dceff7]/80" : "text-[#174A63]")}>
+                <span className={cn("font-medium", dark ? "text-cream-dark/60" : "text-ink")}>
                   {product.rating}
                 </span>
-                <span className={cn(dark ? "text-[#dceff7]/30" : "text-[#174A63]/40")}>
+                <span className={cn(dark ? "text-cream-dark/30" : "text-ink/60")}>
                   ({product.reviewCount})
                 </span>
               </div>
@@ -242,23 +242,23 @@ export default function ProductCard({
 
             <Link href={`/product/${product.slug}`} className="mt-1.5 block">
               <h3 className={cn(
-                "font-display text-lg font-semibold transition-colors group-hover:text-gold sm:text-xl",
-                dark ? "text-[#f8fcfe]" : "text-[#174A63]"
+                "font-display text-base font-semibold transition-colors group-hover:text-gold sm:text-xl",
+                dark ? "text-cream" : "text-ink"
               )}>
                 {product.name}
               </h3>
             </Link>
 
-            <p className={cn("mt-1 text-xs", dark ? "text-[#dceff7]/35" : "text-[#174A63]/45")}>
+            <p className={cn("mt-1 text-xs", dark ? "text-cream-dark/30" : "text-ink/60")}>
               {product.volume} • {product.category}
             </p>
 
             <div className="mt-3 flex items-center gap-2">
-              <span className={cn("text-lg font-semibold", dark ? "text-[#f8fcfe]" : "text-[#174A63]")}>
+              <span className={cn("text-base font-semibold", dark ? "text-cream" : "text-ink")}>
                 {formatPrice(price)}
               </span>
               {product.salePrice && (
-                <span className={cn("text-sm line-through", dark ? "text-[#dceff7]/25" : "text-[#174A63]/35")}>
+                <span className={cn("text-sm line-through", dark ? "text-cream-dark/30" : "text-ink/30")}>
                   {formatPrice(product.price)}
                 </span>
               )}
@@ -270,12 +270,7 @@ export default function ProductCard({
                 addToCart(product);
                 toast.success(`${product.name} added to bag`);
               }}
-              className={cn(
-                "mt-4 flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-medium transition-all duration-700",
-                dark
-                  ? "bg-gradient-to-r from-[#174A63] to-[#0f2838] text-[#f8fcfe] hover:from-gold hover:to-gold-light hover:text-[#0a1b26]"
-                  : "bg-[#174A63] text-white hover:bg-gold"
-              )}
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold via-gold-light to-gold py-3 text-sm font-semibold text-ink transition-all duration-700 hover:brightness-105 hover:shadow-[0_12px_32px_-12px_rgba(188,78,34,0.6)]"
             >
               <ShoppingBag size={16} />
               Add to Bag

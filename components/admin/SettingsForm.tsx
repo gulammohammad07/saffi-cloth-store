@@ -46,7 +46,7 @@ export default function SettingsForm({
           <label htmlFor="navbarTitle" className="mb-2 block font-medium">
             Navbar Title <span className="text-sm font-normal text-gray-500">(optional)</span>
           </label>
-          <input id="navbarTitle" name="navbarTitle" defaultValue={settings.navbarTitle} className={inputClass} placeholder="Danish Perfumes" />
+          <input id="navbarTitle" name="navbarTitle" defaultValue={settings.navbarTitle} className={inputClass} placeholder="Libaas" />
           {state.errors?.navbarTitle && <p className="mt-1 text-sm text-red-600">{state.errors.navbarTitle}</p>}
         </div>
         <div>

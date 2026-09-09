@@ -23,9 +23,9 @@ export default function ResetCategoriesButton() {
       type="button"
       onClick={handleClick}
       disabled={pending}
-      className="rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(201,169,110,0.35)] transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(201,169,110,0.55)] disabled:opacity-50"
+      className="rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(188,78,34,0.35)] transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(188,78,34,0.55)] disabled:opacity-50"
     >
-      {pending ? "Resetting..." : "Reset to Men, Women, Unisex"}
+      {pending ? "Resetting..." : "Reset to clothing defaults"}
     </button>
   );
 }

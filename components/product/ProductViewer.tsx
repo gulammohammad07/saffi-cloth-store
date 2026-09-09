@@ -129,7 +129,7 @@ export default function ProductViewer({ product }: { product: Product }) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="h-6 w-6 text-[#174A63]"
+                className="h-6 w-6 text-ink"
               >
                 <path
                   fillRule="evenodd"
@@ -152,7 +152,7 @@ export default function ProductViewer({ product }: { product: Product }) {
           toggleZoom();
         }}
         className={cn(
-          "group relative order-1 overflow-hidden rounded-3xl bg-[#EFF8FC] md:order-2",
+          "group relative order-1 overflow-hidden rounded-3xl bg-[#EFE9DE] md:order-2",
           zoomed ? "cursor-zoom-out" : "cursor-zoom-in",
         )}
       >
@@ -232,14 +232,14 @@ export default function ProductViewer({ product }: { product: Product }) {
 
         {/* Image counter (touch only — desktop has hover arrows) */}
         {!showVideo && images.length > 1 && (
-          <div className="pointer-events-none absolute bottom-3 right-3 z-10 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white md:hidden">
+          <div className="pointer-events-none absolute bottom-3 right-3 z-10 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white md:hidden">
             {active + 1} / {images.length}
           </div>
         )}
 
         {/* Zoom hint */}
         {!showVideo && (
-          <div className="pointer-events-none absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-[#174A63]/60 opacity-0 shadow backdrop-blur transition-opacity group-hover:opacity-100">
+          <div className="pointer-events-none absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-ink/60 opacity-0 shadow backdrop-blur transition-opacity group-hover:opacity-100">
             <ZoomIn size={18} />
           </div>
         )}

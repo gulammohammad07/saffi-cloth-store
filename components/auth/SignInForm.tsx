@@ -115,7 +115,7 @@ export function SignInForm() {
           </label>
           <Link
             href="/forgot-password"
-            className="text-sm font-medium text-gold transition-colors hover:text-gold-light hover:underline"
+            className="text-sm font-medium text-gold transition-colors hover:text-gold hover:underline"
           >
             Forgot password?
           </Link>
@@ -130,11 +130,11 @@ export function SignInForm() {
 
       <GoogleButton next={next} label="Sign in with Google" />
 
-      <p className="mt-8 text-center text-sm text-ink/50">
-        New to Danish Perfumes?{" "}
+      <p className="mt-8 text-center text-sm text-ink/60">
+        New to Libaas?{" "}
         <Link
           href={`/sign-up${next !== "/" ? `?next=${encodeURIComponent(next)}` : ""}`}
-          className="font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+          className="font-semibold text-gold transition-colors hover:text-gold hover:underline"
         >
           Create an account
         </Link>

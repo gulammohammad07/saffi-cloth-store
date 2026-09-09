@@ -52,7 +52,7 @@ export default function Sidebar() {
     <aside className="w-72 min-h-screen bg-zinc-950 border-r border-zinc-800 text-white">
       {/* Logo */}
       <div className="border-b border-zinc-800 p-6">
-        <h1 className="text-2xl font-bold tracking-wide">Danish Perfumes</h1>
+        <h1 className="text-2xl font-bold tracking-wide">Libaas</h1>
 
         <p className="mt-1 text-sm text-zinc-400">Admin Panel</p>
       </div>
@@ -70,7 +70,7 @@ export default function Sidebar() {
               href={item.href}
               className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${
                 active
-                  ? "bg-white text-black font-semibold shadow"
+                  ? "bg-white text-ink font-semibold shadow"
                   : "text-zinc-300 hover:bg-zinc-900 hover:text-white"
               }`}
             >

@@ -133,11 +133,11 @@ export function SignUpForm() {
 
       <GoogleButton next={next} label="Sign up with Google" />
 
-      <p className="mt-8 text-center text-sm text-ink/50">
+      <p className="mt-8 text-center text-sm text-ink/60">
         Already have an account?{" "}
         <Link
           href={`/sign-in${next !== "/" ? `?next=${encodeURIComponent(next)}` : ""}`}
-          className="font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+          className="font-semibold text-gold transition-colors hover:text-gold hover:underline"
         >
           Sign in
         </Link>

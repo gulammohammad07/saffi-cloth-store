@@ -4,7 +4,7 @@ import { ResetPasswordForm } from "@/components/auth/ResetPasswordForm";
 
 export const metadata: Metadata = {
   title: "Reset Password",
-  description: "Choose a new password for your Danish Perfumes account.",
+  description: "Choose a new password for your Libaas account.",
 };
 
 export default function ResetPasswordPage() {

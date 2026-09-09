@@ -9,14 +9,14 @@ export type Product = {
   slug: string;
   brand: string;
   category: string;
-  productType: "ATTAR" | "PERFUME";
+  productType: "MEN" | "WOMEN" | "KIDS";
   notes: {
     top: FragranceNote[];
     heart: FragranceNote[];
     base: FragranceNote[];
   };
   occasions: string[];
-  gender: "Unisex" | "Men" | "Women";
+  gender: "Unisex" | "Men" | "Women" | "Kids";
   volume: string;
   price: number;
   salePrice?: number;
@@ -33,16 +33,14 @@ export type Product = {
 };
 
 export const notes = [
-  "Oud",
-  "Musk",
-  "Rose",
-  "Amber",
-  "Vanilla",
-  "Saffron",
-  "Sandalwood",
-  "Jasmine",
-  "Bergamot",
-  "Cardamom",
+  "Cotton",
+  "Linen",
+  "Denim",
+  "Silk",
+  "Velvet",
+  "Chiffon",
+  "Jersey",
+  "Satin",
 ];
 
 export const occasions = [
@@ -59,34 +57,34 @@ export const testimonials = [
     location: "Mumbai",
     rating: 5,
     quote:
-      "The Royal Oud is pure magic. I receive compliments everywhere I go — it lasts all day and smells like a thousand rupees more than it costs.",
+      "The fit is impeccable and the fabric feels far more expensive than it is. I've already ordered a second piece in another colour.",
   },
   {
     name: "Rohan Mehta",
     location: "Delhi",
     rating: 5,
     quote:
-      "Finally a place that takes attar seriously. The packaging, the curation, the service — everything feels premium. Amber Nights is my signature now.",
+      "Finally a clothing store that takes craft seriously. The stitching, the curation, the service — everything feels premium. This kurta is my signature now.",
   },
   {
     name: "Priya Sharma",
     location: "Bengaluru",
     rating: 5,
     quote:
-      "Velvet Rose is the most beautiful rose I have ever owned. Delivery was swift and the little samples they send are a lovely touch.",
+      "The co-ord set is the most beautiful thing in my wardrobe. Delivery was swift and the little styling note they send is a lovely touch.",
   },
   {
     name: "Arjun Nair",
     location: "Kochi",
     rating: 4,
     quote:
-      "Sultan Oud is a beast — projection and longevity are outstanding. A true luxury experience from start to finish.",
+      "Quality and finish are outstanding — true luxury from start to finish. Sizing guide was spot on.",
   },
   {
     name: "Sana Kapoor",
     location: "Jaipur",
     rating: 5,
     quote:
-      "Their collection feels hand-picked. White Musk is subtle yet intoxicating, perfect for the office. I will definitely be back.",
+      "Their collection feels hand-picked. The cotton shirts are subtle yet elegant, perfect for the office. I will definitely be back.",
   },
 ];

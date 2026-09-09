@@ -25,7 +25,7 @@ export default function ProductCarousel({
   if (products.length === 0) return null;
 
   return (
-    <section className="bg-[#F8FCFE] py-20">
+    <section className="bg-[#F4EFE6] py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-end justify-between gap-6">
           <SectionHeading eyebrow={eyebrow} title={title} align="left" />
@@ -33,7 +33,7 @@ export default function ProductCarousel({
             <button
               type="button"
               onClick={() => scroll(-1)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#174A63]/20 text-[#174A63] transition-colors hover:bg-[#174A63] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#1C1A17]/20 text-ink transition-colors hover:bg-[#1C1A17] hover:text-white"
               aria-label="Scroll left"
             >
               <ChevronLeft size={18} />
@@ -41,7 +41,7 @@ export default function ProductCarousel({
             <button
               type="button"
               onClick={() => scroll(1)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#174A63]/20 text-[#174A63] transition-colors hover:bg-[#174A63] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#1C1A17]/20 text-ink transition-colors hover:bg-[#1C1A17] hover:text-white"
               aria-label="Scroll right"
             >
               <ChevronRight size={18} />

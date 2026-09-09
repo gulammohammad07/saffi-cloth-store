@@ -127,7 +127,7 @@ export async function signUpAction(
 
   return {
     success: true,
-    message: "Account created successfully. Welcome to Danish Perfumes!",
+    message: "Account created successfully. Welcome to Libaas!",
   };
 }
 

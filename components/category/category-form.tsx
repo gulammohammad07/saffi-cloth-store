@@ -94,7 +94,7 @@ export default function CategoryForm({ initial, onSuccess }: CategoryFormProps) 
             name="name"
             defaultValue={initial?.name ?? ""}
             className="w-full rounded-lg border p-3"
-            placeholder="Attar"
+            placeholder="Kurtas"
             required
           />
           {state.errors?.name && (
@@ -108,7 +108,7 @@ export default function CategoryForm({ initial, onSuccess }: CategoryFormProps) 
             name="slug"
             defaultValue={initial?.slug ?? ""}
             className="w-full rounded-lg border p-3"
-            placeholder="attar"
+            placeholder="kurtas"
             required
           />
           {state.errors?.slug && (
@@ -123,7 +123,7 @@ export default function CategoryForm({ initial, onSuccess }: CategoryFormProps) 
             defaultValue={initial?.description ?? ""}
             className="w-full rounded-lg border p-3"
             rows={3}
-            placeholder="Masculine fragrances"
+            placeholder="Men's everyday styles"
           />
           {state.errors?.description && (
             <p className="mt-1 text-sm text-red-600">

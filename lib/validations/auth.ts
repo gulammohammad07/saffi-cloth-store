@@ -8,6 +8,7 @@ const emailSchema = z
 
 const passwordSchema = z
   .string()
+  .trim()
   .min(8, "Password must be at least 8 characters long.")
   .max(72, "Password must be 72 characters or fewer.")
   .regex(/[a-zA-Z]/, "Password must include at least one letter.")
@@ -35,7 +36,10 @@ export const signUpSchema = z
 
 export const signInSchema = z.object({
   email: emailSchema,
-  password: z.string().min(1, "Password is required."),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required."),
 });
 
 export const forgotPasswordSchema = z.object({

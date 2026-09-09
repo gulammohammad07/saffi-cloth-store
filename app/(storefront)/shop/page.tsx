@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Discover our collection of premium attars and perfumes.",
+  description: "Discover our collection of premium clothing.",
 };
 
 const VALID_SORTS: SortOption[] = ["popularity", "price-asc", "price-desc", "newest"];
@@ -45,11 +45,17 @@ export default async function ShopPage({
     ? (sortParam as SortOption)
     : "popularity";
 
-  const categoryByName = new Map(
-    categories.map((c) => [c.name.toLowerCase(), c]),
-  );
+  // Categories are linked by slug from the navbar, so match on either the
+  // slug or the display name (legacy links used the name).
+  const categoryByKey = new Map<string, StorefrontCategory>();
+  for (const c of categories) {
+    categoryByKey.set(c.slug.toLowerCase(), c);
+    categoryByKey.set(c.name.toLowerCase(), c);
+  }
 
-  const activeCategory = categoryParam ? categoryByName.get(categoryParam) : null;
+  const activeCategory = categoryParam
+    ? categoryByKey.get(categoryParam)
+    : null;
   const activeOccasion = occasions.find(
     (o) => o.name.toLowerCase().replace(/\s+/g, "-") === occasionParam,
   );
@@ -67,7 +73,7 @@ export default async function ShopPage({
       ),
     );
   }
-  if (typeParam === "attar" || typeParam === "perfume") {
+  if (typeParam === "men" || typeParam === "women" || typeParam === "kids") {
     filteredProducts = filteredProducts.filter((p) =>
       p.productType.toLowerCase() === typeParam,
     );
@@ -75,66 +81,163 @@ export default async function ShopPage({
 
   const trending = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
 
+  // Category stats split by gender so the chip rail can show only the
+  // categories that actually have stock for the selected type (Men/Women/Kids)
+  // — clothing stores grow long category lists, so scope them per gender.
+  type TypeKey = "men" | "women" | "kids";
+  const statByCategory = new Map<
+    string,
+    { name: string; byType: Record<TypeKey, number> }
+  >();
+  for (const p of products) {
+    const type = (p.productType || "MEN").toLowerCase() as TypeKey;
+    const key = p.category.toLowerCase();
+    const entry = statByCategory.get(key) ?? {
+      name: p.category,
+      byType: { men: 0, women: 0, kids: 0 },
+    };
+    if (type in entry.byType) entry.byType[type] += 1;
+    statByCategory.set(key, entry);
+  }
+  const validTypeParam: TypeKey | null =
+    typeParam === "men" || typeParam === "women" || typeParam === "kids"
+      ? typeParam
+      : null;
+  const categoryChips = [...statByCategory.values()]
+    .map((entry) => {
+      const count = validTypeParam
+        ? entry.byType[validTypeParam]
+        : entry.byType.men + entry.byType.women + entry.byType.kids;
+      const matched = categoryByKey.get(entry.name.toLowerCase());
+      return {
+        name: entry.name,
+        slug: matched?.slug ?? entry.name.toLowerCase().replace(/\s+/g, "-"),
+        count,
+      };
+    })
+    .filter((chip) => chip.count > 0)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 24);
+
+  const shopUrl = ({
+    type,
+    category,
+  }: {
+    type?: TypeKey | null;
+    category?: string | null;
+  }) => {
+    const params = new URLSearchParams();
+    if (type) params.set("type", type);
+    if (category) params.set("category", category);
+    const query = params.toString();
+    return query ? `/shop?${query}` : "/shop";
+  };
+
   const isNewArrivals = !activeCategory && !activeOccasion && initialSort === "newest";
   const sectionEyebrow = activeCategory
     ? "Curated"
     : activeOccasion
       ? "Perfect For"
       : typeParam
-        ? typeParam === "attar"
-          ? "Attar Collection"
-          : "Perfume Collection"
+        ? "Collections"
         : isNewArrivals
-          ? "Just Poured"
+          ? "Just Landed"
           : "The Collection";
   const sectionTitle = activeCategory
     ? activeCategory.name
     : activeOccasion
       ? activeOccasion.name
       : typeParam
-        ? typeParam === "attar"
-          ? "Attar"
-          : "Perfumes"
+        ? typeParam === "men"
+          ? "Men"
+          : typeParam === "women"
+            ? "Women"
+            : "Kids"
         : isNewArrivals
           ? "New Arrivals"
-          : "Signature Attars";
+          : "All Clothing";
 
   return (
     <>
-      <section className="scroll-mt-24 bg-[#f8fcfe] pb-6 pt-10 sm:pb-8 sm:pt-14">
+      <section className="scroll-mt-24 bg-[#F4EFE6] pb-6 pt-10 sm:pb-8 sm:pt-14">
         <div className="mx-auto max-w-7xl px-6">
+          {/* Gender — the first cut for clothing. Switching keeps the chosen
+              category (e.g. Men → Women while staying on T-Shirts). */}
           <div className="flex flex-wrap items-center gap-3 text-sm">
-            <Link
-              href="/shop"
-              className={`rounded-full border px-4 py-2 transition-colors ${
-                !typeParam
-                  ? "border-[#0f2838] bg-[#0f2838] text-white"
-                  : "border-gold/30 bg-white/70 text-[#0f2838]/70 hover:border-gold"
-              }`}
-            >
-              All
-            </Link>
-            <Link
-              href="/shop?type=attar"
-              className={`rounded-full border px-4 py-2 transition-colors ${
-                typeParam === "attar"
-                  ? "border-[#0f2838] bg-[#0f2838] text-white"
-                  : "border-gold/30 bg-white/70 text-[#0f2838]/70 hover:border-gold"
-              }`}
-            >
-              Attar
-            </Link>
-            <Link
-              href="/shop?type=perfume"
-              className={`rounded-full border px-4 py-2 transition-colors ${
-                typeParam === "perfume"
-                  ? "border-[#0f2838] bg-[#0f2838] text-white"
-                  : "border-gold/30 bg-white/70 text-[#0f2838]/70 hover:border-gold"
-              }`}
-            >
-              Perfumes
-            </Link>
+            {(
+              [
+                { type: null as TypeKey | null, label: "All" },
+                { type: "men" as TypeKey, label: "Men" },
+                { type: "women" as TypeKey, label: "Women" },
+                { type: "kids" as TypeKey, label: "Kids" },
+              ]
+            ).map((option) => {
+              const isActive = (validTypeParam ?? null) === option.type;
+              return (
+                <Link
+                  key={option.label}
+                  href={shopUrl({ type: option.type, category: categoryParam })}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`rounded-full border px-5 py-2.5 text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 ${
+                    isActive
+                      ? "border-[#131110] bg-[#131110] text-white shadow-[0_8px_20px_-8px_rgba(19,17,16,0.4)]"
+                      : "border-gold/30 bg-white/70 text-ink/60 hover:border-gold hover:text-ink"
+                  }`}
+                >
+                  {option.label}
+                </Link>
+              );
+            })}
           </div>
+
+          {/* Category rail — scoped to the selected gender, newest stock first.
+              Hidden until products exist so an empty store stays clean. */}
+          {categoryChips.length > 0 && (
+            <div className="mt-6 flex items-center gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {activeCategory && (
+                <Link
+                  href={shopUrl({ type: validTypeParam, category: null })}
+                  className="flex shrink-0 items-center gap-1.5 rounded-full border border-gold/50 bg-gold/10 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-gold uppercase transition-colors duration-300 hover:bg-gold/20"
+                >
+                  ✕ All categories
+                </Link>
+              )}
+              {categoryChips.map((chip) => {
+                const isActive =
+                  categoryParam !== null &&
+                  (chip.slug.toLowerCase() === categoryParam ||
+                    chip.name.toLowerCase() === categoryParam);
+                return (
+                  <Link
+                    key={chip.slug}
+                    href={shopUrl({
+                      type: validTypeParam,
+                      category: chip.slug,
+                    })}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs transition-colors duration-300 ${
+                      isActive
+                        ? "border-[#BC4E22] bg-[#BC4E22]/10 text-gold-dark"
+                        : "border-[#1C1A17]/12 bg-white/70 text-ink/60 hover:border-gold hover:text-ink"
+                    }`}
+                  >
+                    <span className="font-medium tracking-[0.1em] uppercase">
+                      {chip.name}
+                    </span>
+                    <span
+                      className={`flex h-4.5 min-w-4.5 items-center justify-center rounded-full px-1 text-xs font-bold ${
+                        isActive
+                          ? "bg-[#BC4E22] text-white"
+                          : "bg-[#1C1A17]/10 text-mute"
+                      }`}
+                    >
+                      {chip.count}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

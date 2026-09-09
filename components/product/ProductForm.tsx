@@ -18,16 +18,16 @@ import VideoUploader, {
 import { generateSkuPreview, generateSlug } from "@/lib/utils";
 
 const QUICK_NOTES = [
-  "Oud",
-  "Musk",
-  "Rose",
-  "Amber",
-  "Vanilla",
-  "Saffron",
-  "Sandalwood",
-  "Jasmine",
-  "Bergamot",
-  "Cardamom",
+  "Cotton",
+  "Linen",
+  "Denim",
+  "Silk",
+  "Velvet",
+  "Chiffon",
+  "Jersey",
+  "Satin",
+  "Wool",
+  "Georgette",
 ];
 
 interface ProductFormProps {
@@ -70,7 +70,7 @@ export default function ProductForm({
   const [newBrandSlug, setNewBrandSlug] = useState("");
   const [brandPending, startBrandTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
-  const [productType, setProductType] = useState<"ATTAR" | "PERFUME">("ATTAR");
+  const [productType, setProductType] = useState<"MEN" | "WOMEN" | "KIDS">("MEN");
   const [sizes, setSizes] = useState<{ size: string; price: string; salePrice: string; stock: string }[]>([]);
 
   const resetForm = () => {
@@ -84,7 +84,7 @@ export default function ProductForm({
     setShowBrandForm(false);
     setNewBrandName("");
     setNewBrandSlug("");
-    setProductType("ATTAR");
+    setProductType("MEN");
     setSizes([]);
     formRef.current?.reset();
   };
@@ -188,7 +188,7 @@ export default function ProductForm({
           <input
             name="name"
             className="w-full rounded-lg border p-3"
-            placeholder="Oud Royal"
+            placeholder="Signature Kurta"
             onChange={(e) => {
               const brandId = (e.currentTarget.form?.elements.namedItem("brandId") as HTMLSelectElement)?.value;
               updateSkuPreview(e.target.value, brandId || "");
@@ -262,13 +262,13 @@ export default function ProductForm({
             <button
               type="button"
               onClick={() => setShowBrandForm(true)}
-              className="mt-2 text-sm font-medium text-[#174a63] underline underline-offset-4 hover:text-gold"
+              className="mt-2 text-sm font-medium text-ink underline underline-offset-4 hover:text-gold"
             >
               + Create new brand
             </button>
           ) : (
-            <div className="mt-3 rounded-lg border border-dashed border-[#174a63]/20 bg-[#f8fcfe] p-3">
-              <p className="mb-2 text-xs font-medium text-[#174a63]/60">
+            <div className="mt-3 rounded-lg border border-dashed border-[#1C1A17]/20 bg-[#F4EFE6] p-3">
+              <p className="mb-2 text-xs font-medium text-ink/60">
                 Create a new brand and select it automatically.
               </p>
               <div className="flex flex-col gap-2 sm:flex-row">
@@ -276,19 +276,19 @@ export default function ProductForm({
                   value={newBrandName}
                   onChange={(e) => setNewBrandName(e.target.value)}
                   placeholder="Brand name"
-                  className="flex-1 rounded-lg border border-[#174a63]/15 bg-white px-3 py-2 text-sm focus:border-gold focus:outline-none"
+                  className="flex-1 rounded-lg border border-[#1C1A17]/15 bg-white px-3 py-2 text-sm focus:border-gold focus:outline-none"
                 />
                 <input
                   value={newBrandSlug}
                   onChange={(e) => setNewBrandSlug(e.target.value)}
                   placeholder="slug (optional)"
-                  className="flex-1 rounded-lg border border-[#174a63]/15 bg-white px-3 py-2 text-sm focus:border-gold focus:outline-none"
+                  className="flex-1 rounded-lg border border-[#1C1A17]/15 bg-white px-3 py-2 text-sm focus:border-gold focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={handleCreateBrand}
                   disabled={brandPending}
-                  className="rounded-lg bg-[#174a63] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gold disabled:opacity-50"
+                  className="rounded-lg bg-[#1C1A17] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gold disabled:opacity-50"
                 >
                   {brandPending ? "Creating..." : "Create"}
                 </button>
@@ -296,7 +296,7 @@ export default function ProductForm({
               <button
                 type="button"
                 onClick={() => setShowBrandForm(false)}
-                className="mt-2 text-xs text-[#174a63]/50 hover:text-[#174a63]"
+                className="mt-2 text-xs text-ink/60 hover:text-ink"
               >
                 Cancel
               </button>
@@ -359,18 +359,19 @@ export default function ProductForm({
           )}
         </div>
 
-        {/* Volume */}
+        {/* Colour */}
         <div>
-          <label className="mb-2 block font-medium">Volume</label>
+          <label className="mb-2 block font-medium">Colour</label>
 
           <select name="volume" className="w-full rounded-lg border p-3">
-            <option value="">Select Volume</option>
-            <option value="3ml">3ml</option>
-            <option value="6ml">6ml</option>
-            <option value="12ml">12ml</option>
-            <option value="30ml">30ml</option>
-            <option value="50ml">50ml</option>
-            <option value="100ml">100ml</option>
+            <option value="">Select Colour</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Navy">Navy</option>
+            <option value="Beige">Beige</option>
+            <option value="Olive">Olive</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Multi">Multi</option>
           </select>
 
           {state.errors?.volume && (
@@ -380,17 +381,18 @@ export default function ProductForm({
           )}
         </div>
 
-        {/* Product Type */}
+        {/* Collection */}
         <div>
-          <label className="mb-2 block font-medium">Product Type</label>
+          <label className="mb-2 block font-medium">Collection</label>
           <select
             name="productType"
             value={productType}
-            onChange={(e) => setProductType(e.target.value as "ATTAR" | "PERFUME")}
+            onChange={(e) => setProductType(e.target.value as "MEN" | "WOMEN" | "KIDS")}
             className="w-full rounded-lg border p-3"
           >
-            <option value="ATTAR">Attar</option>
-            <option value="PERFUME">Perfume</option>
+            <option value="MEN">Men</option>
+            <option value="WOMEN">Women</option>
+            <option value="KIDS">Kids</option>
           </select>
         </div>
       </div>
@@ -402,7 +404,7 @@ export default function ProductForm({
           <button
             type="button"
             onClick={addSize}
-            className="text-sm font-medium text-[#174a63] underline underline-offset-4 hover:text-gold"
+            className="text-sm font-medium text-ink underline underline-offset-4 hover:text-gold"
           >
             + Add Size
           </button>
@@ -416,13 +418,13 @@ export default function ProductForm({
         ) : (
           <div className="space-y-3">
             {sizes.map((sizeItem, index) => (
-              <div key={index} className="grid gap-3 rounded-xl border border-[#174a63]/10 bg-[#f8fcfe] p-3 sm:grid-cols-[1.2fr_1fr_1fr_1fr_auto]">
+              <div key={index} className="grid gap-3 rounded-xl border border-[#1C1A17]/10 bg-[#F4EFE6] p-3 sm:grid-cols-[1.2fr_1fr_1fr_1fr_auto]">
                 <div>
                   <input
                     type="text"
                     value={sizeItem.size}
                     onChange={(e) => updateSize(index, "size", e.target.value)}
-                    placeholder="Size (e.g. 10ml)"
+                    placeholder="Size (e.g. M)"
                     className="w-full rounded-lg border p-2.5 text-sm"
                   />
                 </div>
@@ -485,9 +487,9 @@ export default function ProductForm({
       {/* Notes */}
       <div className="mt-6">
         <label className="mb-2 block font-medium">
-          Fragrance Notes{" "}
+          Details / Tags{" "}
           <span className="text-sm font-normal text-gray-500">
-            (comma separated — shown under &quot;Shop by Notes&quot;)
+            (comma separated — shown as key details on product pages)
           </span>
         </label>
 
@@ -496,7 +498,7 @@ export default function ProductForm({
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           className="w-full rounded-lg border p-3"
-          placeholder="Oud, Rose, Amber, Vanilla"
+          placeholder="Cotton, Denim, Silk, Velvet"
         />
 
         <div className="mt-3 flex flex-wrap gap-2">

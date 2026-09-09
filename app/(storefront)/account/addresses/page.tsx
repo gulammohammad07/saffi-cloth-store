@@ -132,26 +132,26 @@ export default function AddressesPage() {
   };
 
   const inputClass =
-    "w-full rounded-xl border border-[#174A63]/15 px-4 py-3 text-sm focus:border-gold focus:outline-none";
+    "w-full rounded-xl border border-[#1C1A17]/15 px-4 py-3 text-sm focus:border-gold focus:outline-none";
 
   if (status === "loading") {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center bg-[#F8FCFE] px-4">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#174A63]/15 border-t-gold" />
+      <div className="flex min-h-[60vh] items-center justify-center bg-[#F4EFE6] px-4">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#1C1A17]/15 border-t-gold" />
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center bg-[#F8FCFE] px-4 py-16">
-        <div className="w-full max-w-md rounded-3xl border border-[#174A63]/10 bg-white p-8 text-center shadow-xl">
-          <p className="text-sm text-[#174A63]/55">
+      <div className="flex min-h-[60vh] items-center justify-center bg-[#F4EFE6] px-4 py-16">
+        <div className="w-full max-w-md rounded-3xl border border-[#1C1A17]/10 bg-white p-8 text-center shadow-xl">
+          <p className="text-sm text-ink/60">
             Please sign in to manage your addresses.
           </p>
           <Link
             href="/sign-in?next=/account/addresses"
-            className="mt-6 inline-block rounded-full bg-[#174A63] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
+            className="mt-6 inline-block rounded-full bg-[#1C1A17] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
           >
             Sign in
           </Link>
@@ -161,7 +161,7 @@ export default function AddressesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FCFE] px-4 py-14 sm:px-8">
+    <div className="min-h-screen bg-[#F4EFE6] px-4 py-14 sm:px-8">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -172,22 +172,22 @@ export default function AddressesPage() {
           <div>
             <Link
               href="/account"
-              className="text-xs font-medium tracking-wide text-[#174A63]/45 uppercase transition-colors hover:text-gold"
+              className="text-xs font-medium tracking-wide text-ink/60 uppercase transition-colors hover:text-gold"
             >
               ← Back to account
             </Link>
-            <h1 className="mt-3 flex items-center gap-3 font-display text-4xl font-medium text-[#174A63]">
+            <h1 className="mt-3 flex items-center gap-3 font-display text-3xl font-medium text-ink">
               <MapPin size={28} className="text-gold" />
               Addresses
             </h1>
-            <p className="mt-2 text-sm text-[#174A63]/50">
+            <p className="mt-2 text-sm text-ink/60">
               Save your delivery addresses for a faster checkout.
             </p>
           </div>
           <button
             type="button"
             onClick={startAdd}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#174A63] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C1A17] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
           >
             <Plus size={16} />
             Add Address
@@ -200,9 +200,9 @@ export default function AddressesPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             onSubmit={handleSave}
-            className="mt-8 rounded-3xl border border-[#174A63]/10 bg-white p-8 shadow-xl"
+            className="mt-8 rounded-3xl border border-[#1C1A17]/10 bg-white p-8 shadow-xl"
           >
-            <h2 className="font-display text-2xl font-medium text-[#174A63]">
+            <h2 className="font-display text-2xl font-medium text-ink">
               {form.id ? "Edit address" : "New address"}
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -271,7 +271,7 @@ export default function AddressesPage() {
               <button
                 type="submit"
                 disabled={saving}
-                className="inline-flex items-center gap-2 rounded-full bg-[#174A63] px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-full bg-[#1C1A17] px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {saving && <Loader2 size={15} className="animate-spin" />}
                 {saving ? "Saving…" : "Save address"}
@@ -279,7 +279,7 @@ export default function AddressesPage() {
               <button
                 type="button"
                 onClick={() => setFormOpen(false)}
-                className="rounded-full border border-[#174A63]/20 px-7 py-3 text-sm font-medium text-[#174A63] transition-colors hover:border-gold hover:text-gold"
+                className="rounded-full border border-[#1C1A17]/20 px-7 py-3 text-sm font-medium text-ink transition-colors hover:border-gold hover:text-gold"
               >
                 Cancel
               </button>
@@ -290,23 +290,23 @@ export default function AddressesPage() {
         {/* Address list */}
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {addresses === null ? (
-            <div className="flex items-center justify-center gap-3 rounded-3xl border border-[#174A63]/10 bg-white p-10 text-sm text-[#174A63]/45 sm:col-span-2">
+            <div className="flex items-center justify-center gap-3 rounded-3xl border border-[#1C1A17]/10 bg-white p-10 text-sm text-ink/60 sm:col-span-2">
               <Loader2 size={16} className="animate-spin text-gold" />
               Loading your addresses…
             </div>
           ) : addresses.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-[#174A63]/20 bg-white p-10 text-center sm:col-span-2">
+            <div className="rounded-3xl border border-dashed border-[#1C1A17]/20 bg-white p-10 text-center sm:col-span-2">
               <Home size={28} className="mx-auto text-gold" />
-              <p className="mt-4 font-display text-xl font-medium text-[#174A63]">
+              <p className="mt-4 font-display text-xl font-medium text-ink">
                 No saved addresses yet
               </p>
-              <p className="mt-1.5 text-sm text-[#174A63]/50">
+              <p className="mt-1.5 text-sm text-ink/60">
                 Add one now and it will be ready at checkout.
               </p>
               <button
                 type="button"
                 onClick={startAdd}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#174A63] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1C1A17] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
               >
                 <Plus size={16} />
                 Add your first address
@@ -319,20 +319,20 @@ export default function AddressesPage() {
                 className={cn(
                   "relative flex flex-col rounded-3xl border bg-white p-7 shadow-sm transition-all",
                   address.isDefault
-                    ? "border-gold/50 shadow-[0_10px_30px_-12px_rgba(201,169,110,0.35)]"
-                    : "border-[#174A63]/10 hover:shadow-md",
+                    ? "border-gold/50 shadow-[0_10px_30px_-12px_rgba(188,78,34,0.35)]"
+                    : "border-[#1C1A17]/10 hover:shadow-md",
                 )}
               >
                 {address.isDefault && (
-                  <span className="absolute -top-2.5 left-6 rounded-full bg-gold px-3 py-1 text-[9px] font-bold tracking-[0.14em] text-[#0a1b26] uppercase">
+                  <span className="absolute -top-2.5 left-6 rounded-full bg-gold px-3 py-1 text-xs font-bold tracking-[0.14em] text-ink uppercase">
                     Default
                   </span>
                 )}
-                <p className="font-display text-lg font-semibold text-[#174A63]">
+                <p className="font-display text-base font-semibold text-ink">
                   {address.name}
                 </p>
-                <p className="mt-1 text-xs text-[#174A63]/45">{address.phone}</p>
-                <p className="mt-3 text-sm leading-relaxed text-[#174A63]/65">
+                <p className="mt-1 text-xs text-ink/60">{address.phone}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink/60">
                   {address.street}
                   <br />
                   {address.city}, {address.state} — {address.pincode}
@@ -340,13 +340,13 @@ export default function AddressesPage() {
                   {address.country}
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2 border-t border-[#174A63]/10 pt-4">
+                <div className="mt-5 flex flex-wrap gap-2 border-t border-[#1C1A17]/10 pt-4">
                   {!address.isDefault && (
                     <button
                       type="button"
                       disabled={busyId === address.id}
                       onClick={() => handleSetDefault(address)}
-                      className="rounded-full bg-[#174A63] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gold disabled:opacity-60"
+                      className="rounded-full bg-[#1C1A17] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gold disabled:opacity-60"
                     >
                       Set as default
                     </button>
@@ -354,7 +354,7 @@ export default function AddressesPage() {
                   <button
                     type="button"
                     onClick={() => startEdit(address)}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#174A63]/20 px-4 py-2 text-xs font-medium text-[#174A63] transition-colors hover:border-gold hover:text-gold"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#1C1A17]/20 px-4 py-2 text-xs font-medium text-ink transition-colors hover:border-gold hover:text-gold"
                   >
                     <Pencil size={12} />
                     Edit

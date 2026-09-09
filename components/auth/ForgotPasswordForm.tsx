@@ -57,10 +57,10 @@ export function ForgotPasswordForm() {
             <CheckCircle2 size={22} className="text-emerald-600" />
           </span>
           <div>
-            <h2 className="font-display text-lg font-medium text-ink">
+            <h2 className="font-display text-base font-medium text-ink">
               Check your inbox
             </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink/55">
+            <p className="mt-1.5 text-sm leading-relaxed text-ink/60">
               If an account exists for that email, a password reset link is on
               its way. The link expires in one hour.
             </p>
@@ -71,7 +71,7 @@ export function ForgotPasswordForm() {
               setSent(false);
               router.push("/sign-in");
             }}
-            className="text-sm font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+            className="text-sm font-semibold text-gold transition-colors hover:text-gold hover:underline"
           >
             Back to sign in
           </button>
@@ -97,11 +97,11 @@ export function ForgotPasswordForm() {
         </form>
       )}
 
-      <p className="mt-8 text-center text-sm text-ink/50">
+      <p className="mt-8 text-center text-sm text-ink/60">
         Remembered your password?{" "}
         <Link
           href="/sign-in"
-          className="font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+          className="font-semibold text-gold transition-colors hover:text-gold hover:underline"
         >
           Sign in
         </Link>

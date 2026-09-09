@@ -72,12 +72,12 @@ export function ResetPasswordForm() {
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-100">
             <AlertTriangle size={22} className="text-amber-600" />
           </span>
-          <p className="text-sm leading-relaxed text-ink/55">
+          <p className="text-sm leading-relaxed text-ink/60">
             {formError ?? "The reset link is invalid. Please request a new one."}
           </p>
           <Link
             href="/forgot-password"
-            className="text-sm font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+            className="text-sm font-semibold text-gold transition-colors hover:text-gold hover:underline"
           >
             Request a new link
           </Link>
@@ -86,7 +86,7 @@ export function ResetPasswordForm() {
         <form onSubmit={onSubmit} className="space-y-5" noValidate>
           {formError ? <FormError message={formError} /> : null}
 
-          <div className="flex items-center gap-2.5 rounded-xl border border-ink/10 bg-cream px-4 py-3 text-xs text-ink/50">
+          <div className="flex items-center gap-2.5 rounded-xl border border-ink/10 bg-cream px-4 py-3 text-xs text-ink/60">
             <KeyRound size={14} className="shrink-0 text-gold" />
             <span className="truncate">
               Reset link token: {token.slice(0, 18)}…
@@ -121,11 +121,11 @@ export function ResetPasswordForm() {
         </form>
       )}
 
-      <p className="mt-8 text-center text-sm text-ink/50">
+      <p className="mt-8 text-center text-sm text-ink/60">
         Remembered your password?{" "}
         <Link
           href="/sign-in"
-          className="font-semibold text-gold transition-colors hover:text-gold-light hover:underline"
+          className="font-semibold text-gold transition-colors hover:text-gold hover:underline"
         >
           Sign in
         </Link>

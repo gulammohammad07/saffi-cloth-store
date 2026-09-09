@@ -67,7 +67,7 @@ export default async function RecentOrders() {
                 {formatPrice(order.total)}
               </p>
               <span
-                className={`inline-block rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase ${
+                className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase ${
                   STATUS_STYLES[order.status] ?? "bg-gray-100 text-gray-600"
                 }`}
               >

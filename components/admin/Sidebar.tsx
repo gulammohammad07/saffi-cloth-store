@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, FolderTree, Package, ShoppingCart, Settings, Store, Image as ImageIcon, Gift, LogOut, X, Tags, Users, Ticket } from "lucide-react";
+import { LayoutDashboard, FolderTree, Package, ShoppingCart, Settings, Store, Image as ImageIcon, Gift, LogOut, X, Tags, Users, Ticket, ExternalLink } from "lucide-react";
 import { signOutAction } from "@/lib/actions/auth.actions";
 import { useAuth } from "@/lib/store/auth-context";
 import { toast } from "sonner";
@@ -82,18 +82,18 @@ export default function Sidebar({ isOpen, onOpenChange }: SidebarProps) {
       )}
 
       <aside
-        className={`fixed top-0 left-0 z-50 w-72 sm:w-64 transform bg-[#0f2838] text-white transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:h-fit lg:self-start lg:translate-x-0 max-h-screen overflow-y-auto ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-[#131110] text-white transition-transform duration-300 ease-in-out sm:w-64 lg:sticky lg:top-0 lg:h-dvh lg:self-start lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-6 py-6">
+        <div className="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-6 py-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-ink">
               <Store size={22} />
             </div>
 
             <div>
-              <h1 className="text-xl font-bold">Danish Perfumes</h1>
+              <h1 className="text-xl font-bold">Libaas</h1>
               <p className="text-xs text-zinc-400">Admin Dashboard</p>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function Sidebar({ isOpen, onOpenChange }: SidebarProps) {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-2 overflow-y-auto p-4">
+        <nav className="min-h-0 flex-1 space-y-1.5 overflow-y-auto p-4">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
@@ -119,7 +119,7 @@ export default function Sidebar({ isOpen, onOpenChange }: SidebarProps) {
                 onClick={() => onOpenChange(false)}
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${
                   active
-                    ? "bg-white text-black shadow-md"
+                    ? "bg-white text-ink shadow-md"
                     : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
                 }`}
               >
@@ -128,9 +128,20 @@ export default function Sidebar({ isOpen, onOpenChange }: SidebarProps) {
               </Link>
             );
           })}
+
+          <div className="border-t border-white/10 pt-3">
+            <Link
+              href="/"
+              onClick={() => onOpenChange(false)}
+              className="flex items-center gap-3 rounded-xl px-4 py-3 text-zinc-300 transition-all hover:bg-zinc-800 hover:text-white"
+            >
+              <ExternalLink size={20} />
+              <span className="font-medium">Open Storefront</span>
+            </Link>
+          </div>
         </nav>
 
-        <div className="border-t border-white/10 p-6">
+        <div className="shrink-0 border-t border-white/10 p-6">
           <p className="text-xs text-zinc-400">Logged in as</p>
 
           <h3 className="font-semibold">{user?.name ?? "Admin"}</h3>

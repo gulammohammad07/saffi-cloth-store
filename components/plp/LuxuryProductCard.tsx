@@ -44,13 +44,13 @@ export default function LuxuryProductCard({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group relative overflow-hidden rounded-[28px] border border-[#e0ecf2] bg-white shadow-[0_8px_30px_rgba(15,40,56,0.08)] transition-all duration-700",
-        "hover:-translate-y-3 hover:border-gold/40 hover:shadow-[0_40px_80px_-28px_rgba(201,169,110,0.3)]",
+        "group relative overflow-hidden rounded-[28px] border border-[#E3DACB] bg-white shadow-[0_8px_30px_rgba(19,17,16,0.08)] transition-all duration-700",
+        "hover:-translate-y-3 hover:border-gold/40 hover:shadow-[0_40px_80px_-28px_rgba(188,78,34,0.3)]",
         className,
       )}
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-[#f0f7fb] via-[#f8fcfe] to-[#faf9f7]">
-        <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(201,169,110,0.18),transparent_70%)]" />
+      <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-[#ECE5D8] via-[#F4EFE6] to-[#F3EEE5]">
+        <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(188,78,34,0.18),transparent_70%)]" />
 
         <Link href={`/product/${product.slug}`} className="block h-full w-full">
           <Image
@@ -63,7 +63,7 @@ export default function LuxuryProductCard({
         </Link>
 
         {product.badge && (
-          <span className="absolute left-5 top-5 z-10 rounded-full border border-gold/30 bg-white/80 px-3.5 py-1.5 text-[9px] font-bold tracking-[0.18em] text-gold uppercase shadow-lg backdrop-blur-xl">
+          <span className="absolute left-5 top-5 z-10 rounded-full border border-gold/30 bg-white/80 px-3.5 py-1.5 text-xs font-bold tracking-[0.18em] text-gold uppercase shadow-lg backdrop-blur-xl">
             {product.badge}
           </span>
         )}
@@ -73,8 +73,8 @@ export default function LuxuryProductCard({
           onClick={handleWishlist}
           aria-label="Add to wishlist"
           className={cn(
-            "absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-[0_8px_24px_rgba(15,40,56,0.12)] backdrop-blur-xl transition-all duration-500 hover:scale-110 hover:bg-gold hover:text-white",
-            wished ? "text-red-500" : "text-[#5f7788] hover:text-red-400",
+            "absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-[0_8px_24px_rgba(19,17,16,0.12)] backdrop-blur-xl transition-all duration-500 hover:scale-110 hover:bg-gold hover:text-white",
+            wished ? "text-red-500" : "text-mute hover:text-red-400",
           )}
         >
           <Heart size={16} fill={wished ? "currentColor" : "none"} />
@@ -83,7 +83,7 @@ export default function LuxuryProductCard({
         <button
           type="button"
           onClick={handleAdd}
-          className="absolute inset-x-5 bottom-5 z-10 hidden translate-y-5 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0f2838] to-[#174a63] px-5 py-3.5 text-[11px] font-semibold tracking-[0.16em] text-white uppercase opacity-0 backdrop-blur-xl transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 hover:from-gold hover:to-gold-light hover:text-[#0a1b26] lg:flex"
+          className="absolute inset-x-5 bottom-5 z-10 hidden translate-y-5 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#131110] to-[#1C1A17] px-5 py-3.5 text-xs font-semibold tracking-[0.16em] text-white uppercase opacity-0 backdrop-blur-xl transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 hover:from-gold hover:to-gold-light hover:text-ink lg:flex"
         >
           <Plus size={14} />
           Quick Add
@@ -93,7 +93,7 @@ export default function LuxuryProductCard({
           type="button"
           onClick={handleAdd}
           aria-label={`Add ${product.name} to bag`}
-          className="absolute bottom-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[#0f2838] text-white shadow-lg transition-all duration-500 hover:bg-gold hover:text-[#0a1b26] lg:hidden"
+          className="absolute bottom-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[#131110] text-white shadow-lg transition-all duration-500 hover:bg-gold hover:text-ink lg:hidden"
         >
           <Plus size={18} />
         </button>
@@ -101,36 +101,36 @@ export default function LuxuryProductCard({
 
       <div className="px-6 pb-6 pt-5">
         <div className="flex items-center justify-between">
-          <p className="text-[9px] font-semibold tracking-[0.26em] text-gold uppercase">
+          <p className="text-xs font-semibold tracking-[0.26em] text-gold uppercase">
             {product.brand}
           </p>
           <span className="flex items-center gap-1.5">
             <Star size={12} className="fill-gold text-gold" />
-            <span className="text-xs font-medium text-[#0f2838]/80">
+            <span className="text-xs font-medium text-ink/60">
               {product.rating}
             </span>
-            <span className="text-[10px] text-[#5f7788]/50">
+            <span className="text-xs text-mute">
               ({product.reviewCount})
             </span>
           </span>
         </div>
 
         <Link href={`/product/${product.slug}`} className="mt-2 block">
-          <h3 className="font-display text-[1.35rem] font-semibold leading-snug text-[#0f2838] transition-colors duration-500 group-hover:text-gold">
+          <h3 className="font-display text-2xl font-semibold leading-snug text-ink transition-colors duration-500 group-hover:text-gold">
             {product.name}
           </h3>
         </Link>
 
         <div className="mt-3 flex items-baseline gap-2.5">
-          <span className="text-lg font-semibold tracking-tight text-[#0f2838]">
+          <span className="text-base font-semibold tracking-tight text-ink">
             {formatPrice(price)}
           </span>
           {product.salePrice && (
-            <span className="text-sm text-[#5f7788]/40 line-through">
+            <span className="text-sm text-mute line-through">
               {formatPrice(product.price)}
             </span>
           )}
-          <span className="ml-auto text-[10px] font-medium tracking-[0.14em] text-[#5f7788]/40 uppercase">
+          <span className="ml-auto text-xs font-medium tracking-[0.14em] text-mute uppercase">
             {product.volume}
           </span>
         </div>

@@ -130,7 +130,7 @@ export default function VideoUploader({
 
       {uploading ? (
         <div className="flex h-44 flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-black/20 bg-gray-50">
-          <Loader2 size={26} className="animate-spin text-black" />
+          <Loader2 size={26} className="animate-spin text-ink" />
           <p className="text-sm font-medium">Uploading video to Cloudinary…</p>
           <div className="h-2 w-48 overflow-hidden rounded-full bg-gray-200">
             <div
@@ -190,7 +190,7 @@ export default function VideoUploader({
           <span
             className={cn(
               "flex h-12 w-12 items-center justify-center rounded-full transition-colors",
-              dragging ? "bg-black text-white" : "bg-black/5 text-black",
+              dragging ? "bg-black text-white" : "bg-black/5 text-ink",
             )}
           >
             <Video size={22} />

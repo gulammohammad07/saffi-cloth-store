@@ -29,15 +29,15 @@ export default function SectionHeading({
     >
       <div className={cn("flex items-center gap-5", align === "center" && "justify-center")}>
         <span className="h-px w-14 bg-gold/80" />
-        <p className="text-[11px] font-semibold tracking-[0.32em] text-gold uppercase">
+        <p className="text-xs font-semibold tracking-[0.32em] text-gold uppercase">
           {eyebrow}
         </p>
       </div>
 
       <h2
         className={cn(
-          "mt-5 font-display text-4xl font-medium tracking-tight sm:text-5xl lg:text-[4rem]",
-          dark ? "text-[#f8fcfe]" : "text-[#0f2838]",
+          "mt-5 font-display text-3xl font-medium tracking-tight sm:text-5xl lg:text-6xl",
+          dark ? "text-cream" : "text-ink",
         )}
       >
         {title}
@@ -46,9 +46,9 @@ export default function SectionHeading({
       {description && (
         <p
           className={cn(
-            "mx-auto mt-5 max-w-xl text-[15px] leading-[1.7]",
+            "mx-auto mt-5 max-w-xl text-base leading-[1.7]",
             align === "center" && "mx-auto text-center",
-            dark ? "text-[#dceff7]/50" : "text-[#0f2838]/55",
+            dark ? "text-cream-dark/60" : "text-ink/60",
           )}
         >
           {description}

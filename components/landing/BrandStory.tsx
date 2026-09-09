@@ -9,41 +9,41 @@ import type { StorefrontBanner } from "@/lib/services/storefront-data";
 const pillars = [
   {
     icon: Sparkles,
-    title: "Rare Ingredients",
-    text: "Kashmiri oud, Damask rose and Mysore sandalwood — sourced from trusted artisans.",
+    title: "Premium Fabrics",
+    text: "Handpicked cottons, linens and silks from trusted mills across India.",
   },
   {
     icon: Droplets,
-    title: "Hand-Poured",
-    text: "Every bottle is filled, rested and sealed by hand in small batches.",
+    title: "Precision Fit",
+    text: "True-to-size cuts, designed on real bodies — not just hangers.",
   },
   {
     icon: Clock,
-    title: "Aged With Patience",
-    text: "Our blends rest for weeks to mature into deeper, richer compositions.",
+    title: "Finished to Last",
+    text: "Careful stitching and quality trims that survive season after season.",
   },
 ];
 
 const milestones = [
   {
-    year: "2018",
-    title: "A Single Copper Still",
-    text: "Danish Perfumes is born in the attar bazaars of the Middle East.",
-  },
-  {
-    year: "2020",
-    title: "The First Atelier",
-    text: "Our workshop opens, and hand-poured batches find their first collectors.",
+    year: "2021",
+    title: "A Single Sewing Table",
+    text: "Libaas begins with one master tailor and a sewing table in Mumbai.",
   },
   {
     year: "2023",
-    title: "50 Rare Blends",
-    text: "Kashmiri oud and Mysore sandalwood join a growing, hand-curated maison.",
+    title: "The First Studio",
+    text: "Our atelier opens, and the first small-batch collections find their homes.",
+  },
+  {
+    year: "2024",
+    title: "100+ Curated Styles",
+    text: "Linen, denim and silk join a growing, hand-curated wardrobe.",
   },
   {
     year: "Today",
-    title: "Loved Worldwide",
-    text: "10,000+ collectors across the globe wear an MD signature.",
+    title: "Loved Across India",
+    text: "10,000+ customers across the country wear Libaas every day.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function BrandStory({
   // Same art-direction-with-optimisation approach as the hero: a raw <source>
   // beside a <next/image> bypasses the optimiser entirely on small screens.
   const storyShared = {
-    alt: banner?.title ?? "The art of attar making",
+    alt: banner?.title ?? "the craft of fine clothing",
     sizes: "(max-width: 1024px) 100vw, 50vw",
     quality: 75,
   };
@@ -108,7 +108,7 @@ export default function BrandStory({
     : [];
 
   return (
-    <section id="story" className="overflow-hidden bg-[#F8FCFE] py-28 text-[#174A63]">
+    <section id="story" className="overflow-hidden bg-[#F4EFE6] py-28 text-ink">
       <div className="mx-auto max-w-7xl px-6">
         <div
           className={`grid items-center gap-16 ${
@@ -128,7 +128,7 @@ export default function BrandStory({
             >
               <motion.div
                 style={{ y: imageY }}
-                className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gold/25 shadow-[0_40px_80px_-40px_rgba(23,74,99,0.45)]"
+                className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gold/25 shadow-[0_40px_80px_-40px_rgba(28,26,23,0.45)]"
               >
                 <picture>
                   {storyVariants.map((v) => (
@@ -148,7 +148,7 @@ export default function BrandStory({
                     />
                   )}
                 </picture>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#F8FCFE]/35 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F4EFE6]/35 to-transparent" />
               </motion.div>
 
               <motion.div
@@ -156,12 +156,12 @@ export default function BrandStory({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-gold/40 bg-white/80 p-6 shadow-[0_0_50px_rgba(201,169,110,0.25)] backdrop-blur-md sm:block"
+                className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-gold/40 bg-white/80 p-6 shadow-[0_0_50px_rgba(188,78,34,0.25)] backdrop-blur-md sm:block"
               >
-                <p className="gold-gradient-text font-display text-4xl font-semibold">
+                <p className="gold-gradient-text font-display text-3xl font-semibold">
                   8+ Yrs
                 </p>
-                <p className="mt-1 text-xs tracking-[0.2em] text-[#174A63]/60 uppercase">
+                <p className="mt-1 text-xs tracking-[0.2em] text-ink/60 uppercase">
                   of Craft
                 </p>
               </motion.div>
@@ -175,7 +175,7 @@ export default function BrandStory({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-[11px] font-semibold tracking-[0.3em] text-gold uppercase"
+              className="text-xs font-semibold tracking-[0.3em] text-gold uppercase"
             >
               Our Story
             </motion.p>
@@ -185,9 +185,9 @@ export default function BrandStory({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-4 font-display text-4xl font-medium sm:text-5xl"
+              className="mt-4 font-display text-3xl font-medium sm:text-5xl"
             >
-              Perfume, the way
+              Clothing, the way
               <span className="gold-gradient-text italic">
                 {" "}
                 it was meant to be
@@ -199,13 +199,12 @@ export default function BrandStory({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-sm leading-relaxed text-[#174A63]/60"
+              className="mt-6 text-sm leading-relaxed text-ink/60"
             >
-              Born from a fascination with the attar bazaars of the Middle
-              East, Danish Perfumes began with a single copper still and a belief:
-              that fragrance should be pure, concentrated and personal. No
-              fillers, no shortcuts — just rare oils, aged with devotion and
-              bottled by hand.
+              Born from a love of well-made clothing, Libaas began with a
+              single sewing table and a belief: that style should be honest,
+              comfortable and personal. No shortcuts — just premium fabrics,
+              cut with care and finished by hand.
             </motion.p>
 
             <div className="mt-10 space-y-6">
@@ -216,16 +215,16 @@ export default function BrandStory({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  className="group flex gap-4 rounded-2xl border border-gold/20 bg-white/60 p-4 shadow-[0_10px_30px_-18px_rgba(23,74,99,0.2)] transition-colors duration-500 hover:border-gold/40 hover:bg-white/80"
+                  className="group flex gap-4 rounded-2xl border border-gold/20 bg-white/60 p-4 shadow-[0_10px_30px_-18px_rgba(28,26,23,0.2)] transition-colors duration-500 hover:border-gold/40 hover:bg-white/80"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10">
                     <pillar.icon size={20} className="text-gold" />
                   </div>
                   <div>
-                    <h3 className="font-display text-lg font-medium text-[#174A63]">
+                    <h3 className="font-display text-base font-medium text-ink">
                       {pillar.title}
                     </h3>
-                    <p className="mt-1 text-sm text-[#174A63]/55">
+                    <p className="mt-1 text-sm text-ink/60">
                       {pillar.text}
                     </p>
                   </div>
@@ -249,18 +248,18 @@ export default function BrandStory({
               {index < milestones.length - 1 && (
                 <div className="absolute left-[5px] top-7 hidden h-full w-px bg-gradient-to-b from-gold/50 to-gold/10 lg:block" />
               )}
-              <div className="absolute left-0 top-1.5 hidden h-[11px] w-[11px] rounded-full border-2 border-gold bg-[#F8FCFE] lg:block" />
+              <div className="absolute left-0 top-1.5 hidden h-[11px] w-[11px] rounded-full border-2 border-gold bg-[#F4EFE6] lg:block" />
               <div className="lg:pl-8">
                 <p className="gold-gradient-text font-display text-3xl font-semibold">
                   {milestone.year}
                 </p>
-                <h3 className="mt-3 font-display text-lg font-medium text-[#174A63]">
+                <h3 className="mt-3 font-display text-base font-medium text-ink">
                   {milestone.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#174A63]/55">
+                <p className="mt-2 text-sm leading-relaxed text-ink/60">
                   {milestone.text}
                 </p>
-                <ChevronRight size={14} className="mt-3 hidden text-gold/50 lg:block" />
+                <ChevronRight size={14} className="mt-3 hidden text-gold/60 lg:block" />
               </div>
             </motion.div>
           ))}

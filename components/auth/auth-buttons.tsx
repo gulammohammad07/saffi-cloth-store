@@ -62,7 +62,7 @@ export function AuthSubmitButton({
     <button
       type="submit"
       disabled={pending}
-      className="group relative flex h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-gold via-gold-light to-gold text-sm font-semibold text-[#174A63] shadow-[0_12px_30px_-12px_rgb(201_169_110/0.8)] transition-all hover:shadow-[0_16px_36px_-12px_rgb(201_169_110/0.9)] focus-visible:ring-4 focus-visible:ring-gold/30 focus-visible:outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-70"
+      className="group relative flex h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-gold via-gold-light to-gold text-sm font-semibold text-ink shadow-[0_12px_30px_-12px_rgb(201_169_110/0.8)] transition-all hover:shadow-[0_16px_36px_-12px_rgb(201_169_110/0.9)] focus-visible:ring-4 focus-visible:ring-gold/30 focus-visible:outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-70"
     >
       <span className="relative z-10 inline-flex items-center gap-2">
         {pending ? (
@@ -74,7 +74,7 @@ export function AuthSubmitButton({
           children
         )}
       </span>
-      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-gold-light via-[#E3D0A4] to-gold-light transition-transform duration-500 group-hover:translate-x-0" />
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-gold-light via-[#DBA381] to-gold-light transition-transform duration-500 group-hover:translate-x-0" />
     </button>
   );
 }
@@ -83,7 +83,7 @@ export function OrDivider({ label = "or" }: { label?: string }) {
   return (
     <div className="my-6 flex items-center gap-4">
       <span className="h-px flex-1 bg-ink/10" />
-      <span className="text-[11px] font-medium tracking-[0.2em] text-ink/35 uppercase">
+      <span className="text-xs font-medium tracking-[0.2em] text-ink/30 uppercase">
         {label}
       </span>
       <span className="h-px flex-1 bg-ink/10" />

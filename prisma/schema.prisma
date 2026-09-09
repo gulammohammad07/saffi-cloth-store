@@ -136,7 +136,7 @@ model Product {
   stock         Int       @default(0)
   volume        String
   notes         String[]  @default([])
-  productType   String    @default("ATTAR")
+  productType   String    @default("MEN")
   brand         Brand     @relation(fields: [brandId], references: [id])
   category      Category  @relation(fields: [categoryId], references: [id])
   occasions     Occasion[]
@@ -296,15 +296,15 @@ model OrderItem {
 
 model StoreSettings {
   id                    Int      @id @default(1)
-  storeName             String   @default("Danish Perfumes")
-  supportEmail          String   @default("support@danishperfumes.com")
+  storeName             String   @default("Libaas")
+  supportEmail          String   @default("support@libaas.com")
   supportPhone          String   @default("")
   address               String   @default("")
   freeShippingThreshold Float    @default(1500)
   shippingFee           Float    @default(99)
   currency              String   @default("INR")
-  navbarTitle           String   @default("Danish Perfumes")
-  navbarTitleColor      String   @default("#0f2838")
+  navbarTitle           String   @default("Libaas")
+  navbarTitleColor      String   @default("#2F221A")
   navbarLogoUrl         String?
   navbarDisplayMode     String   @default("TEXT")
   updatedAt             DateTime @updatedAt

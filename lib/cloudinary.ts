@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-export const CLOUDINARY_FOLDER = "Attar-Store/products";
+export const CLOUDINARY_FOLDER = "Saffi Ecom Store";
 export const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024;
 export const MAX_VIDEO_SIZE_BYTES = 100 * 1024 * 1024;
 

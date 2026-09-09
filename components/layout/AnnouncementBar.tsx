@@ -8,9 +8,9 @@ import { formatPrice } from "@/lib/utils";
 function buildMessages(freeShippingThreshold: number) {
   return [
     `Complimentary shipping on orders above ${formatPrice(freeShippingThreshold)}`,
-    "Hand-poured attars • Small batch craft",
-    "Use code OUD10 for 10% off your first order",
-    "Long-lasting sillage • Est. 2025",
+    "Premium fabrics • New drops weekly",
+    "Use code WELCOME10 for 10% off your first order",
+    "Free easy returns • Est. 2025",
   ];
 }
 
@@ -36,7 +36,7 @@ export default function AnnouncementBar() {
   }, [messages.length]);
 
   return (
-    <div className="bg-charcoal text-[#E3F2F9]">
+    <div className="bg-charcoal text-cream-dark">
       <div className="relative h-9 overflow-hidden">
         <AnimatedMessage message={messages[index]} />
       </div>
@@ -51,7 +51,7 @@ function AnimatedMessage({ message }: { message: string }) {
     // cost in the load window.
     <p
       key={message}
-      className="flex h-9 animate-fade-in items-center justify-center text-[11px] font-medium tracking-[0.2em] uppercase"
+      className="flex h-9 animate-fade-in items-center justify-center text-xs font-medium tracking-[0.2em] uppercase"
     >
       {message}
     </p>

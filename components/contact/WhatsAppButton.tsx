@@ -6,7 +6,7 @@
  */
 export default function WhatsAppButton({
   phone,
-  storeName = "Danish Perfumes",
+  storeName = "Libaas",
 }: {
   phone: string;
   storeName?: string;
@@ -26,7 +26,7 @@ export default function WhatsAppButton({
       aria-label="Chat with us on WhatsApp"
       className="group fixed right-5 bottom-5 z-40 flex items-center gap-3"
     >
-      <span className="pointer-events-none hidden translate-x-2 rounded-full bg-[#0a1b26]/90 px-4 py-2 text-xs font-semibold text-white opacity-0 shadow-lg backdrop-blur transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
+      <span className="pointer-events-none hidden translate-x-2 rounded-full bg-[#0D0B09]/90 px-4 py-2 text-xs font-semibold text-white opacity-0 shadow-lg backdrop-blur transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
         Chat with us on WhatsApp
       </span>
       <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.8)] ring-4 ring-white/70 transition-transform duration-300 ease-out group-hover:scale-110 group-active:scale-95">

@@ -95,14 +95,14 @@ export default function PlaceAutocomplete({
         aria-autocomplete="list"
         aria-controls={`${name}-suggestions`}
         aria-label={placeholder}
-        className="w-full rounded-xl border border-[#174A63]/15 px-4 py-3 text-sm focus:border-gold focus:outline-none"
+        className="w-full rounded-xl border border-[#1C1A17]/15 px-4 py-3 text-sm focus:border-gold focus:outline-none"
       />
 
       {showList && (
         <ul
           id={`${name}-suggestions`}
           role="listbox"
-          className="absolute top-full left-0 z-20 mt-2 max-h-60 w-full overflow-y-auto rounded-xl border border-[#174A63]/10 bg-white py-1.5 shadow-[0_20px_50px_-16px_rgba(15,40,56,0.3)]"
+          className="absolute top-full left-0 z-20 mt-2 max-h-60 w-full overflow-y-auto rounded-xl border border-[#1C1A17]/10 bg-white py-1.5 shadow-[0_20px_50px_-16px_rgba(19,17,16,0.3)]"
           onMouseDown={() => {
             if (blurTimer.current) clearTimeout(blurTimer.current);
           }}
@@ -116,14 +116,14 @@ export default function PlaceAutocomplete({
                 className={cn(
                   "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors",
                   highlight === index
-                    ? "bg-gold/10 text-[#0a1b26]"
-                    : "text-[#174A63]/80",
+                    ? "bg-gold/10 text-ink"
+                    : "text-ink/60",
                 )}
               >
                 <span className="flex min-w-0 items-center gap-2.5">
                   <MapPin
                     size={14}
-                    className="shrink-0 text-gold/70"
+                    className="shrink-0 text-gold/60"
                     aria-hidden
                   />
                   <span className="truncate">{option}</span>

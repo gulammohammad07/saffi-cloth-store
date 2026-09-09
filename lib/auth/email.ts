@@ -42,8 +42,8 @@ async function sendMail(options: MailOptions) {
     return false;
   }
 
-  const fromName = process.env.SMTP_FROM_NAME ?? "Danish Perfumes";
-  const fromAddress = process.env.SMTP_FROM_EMAIL ?? "noreply@danishperfumes.com";
+  const fromName = process.env.SMTP_FROM_NAME ?? "Libaas";
+  const fromAddress = process.env.SMTP_FROM_EMAIL ?? "noreply@libaas.com";
 
   await transporter.sendMail({
     from: `"${fromName}" <${fromAddress}>`,
@@ -66,30 +66,30 @@ export async function sendPasswordResetEmail(input: {
   const expiresInHours = 1;
 
   const html = `
-    <div style="background:#F8FCFE;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
-      <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #DCEFF7;border-radius:16px;overflow:hidden;">
-        <div style="background:#174A63;padding:28px 32px;text-align:center;">
-          <p style="margin:0;color:#C9A96E;font-size:18px;letter-spacing:4px;font-weight:600;">DANISH PERFUMES</p>
+    <div style="background:#F4EFE6;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
+      <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #E9E1D3;border-radius:16px;overflow:hidden;">
+        <div style="background:#1C1A17;padding:28px 32px;text-align:center;">
+          <p style="margin:0;color:#BC4E22;font-size:18px;letter-spacing:4px;font-weight:600;">LIBAAS</p>
         </div>
         <div style="padding:32px;">
-          <h1 style="margin:0 0 12px;color:#174A63;font-size:22px;">Reset your password</h1>
-          <p style="margin:0 0 20px;color:#5F7788;font-size:15px;line-height:1.6;">
+          <h1 style="margin:0 0 12px;color:#1C1A17;font-size:22px;">Reset your password</h1>
+          <p style="margin:0 0 20px;color:#857D72;font-size:15px;line-height:1.6;">
             Hello ${name}, we received a request to reset the password for your account.
             This link is valid for the next ${expiresInHours} hour${expiresInHours > 1 ? "s" : ""}.
           </p>
-          <a href="${resetUrl}" style="display:inline-block;background:#174A63;color:#ffffff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;">
+          <a href="${resetUrl}" style="display:inline-block;background:#1C1A17;color:#ffffff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;">
             Reset Password
           </a>
-          <p style="margin:24px 0 0;color:#6B7C88;font-size:13px;line-height:1.6;">
+          <p style="margin:24px 0 0;color:#9C958A;font-size:13px;line-height:1.6;">
             If you didn't request this, you can safely ignore this email. Your password won't change.
           </p>
-          <p style="margin:8px 0 0;color:#6B7C88;font-size:13px;line-height:1.6;">
+          <p style="margin:8px 0 0;color:#9C958A;font-size:13px;line-height:1.6;">
             Or copy and paste this link into your browser:<br/>
-            <span style="word-break:break-all;color:#C9A96E;">${resetUrl}</span>
+            <span style="word-break:break-all;color:#BC4E22;">${resetUrl}</span>
           </p>
         </div>
-        <div style="background:#F8FCFE;padding:16px 32px;text-align:center;">
-          <p style="margin:0;color:#6B7C88;font-size:12px;">© ${new Date().getFullYear()} Danish Perfumes · ${appUrl}</p>
+        <div style="background:#F4EFE6;padding:16px 32px;text-align:center;">
+          <p style="margin:0;color:#9C958A;font-size:12px;">© ${new Date().getFullYear()} Libaas · ${appUrl}</p>
         </div>
       </div>
     </div>
@@ -97,5 +97,5 @@ export async function sendPasswordResetEmail(input: {
 
   const text = `Hello ${name}, we received a request to reset the password for your account. Visit this link to reset it (valid for ${expiresInHours} hour${expiresInHours > 1 ? "s" : ""}): ${resetUrl}`;
 
-  return sendMail({ to, subject: "Reset your Danish Perfumes password", html, text });
+  return sendMail({ to, subject: "Reset your Libaas password", html, text });
 }

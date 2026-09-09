@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         hostname: "lh*.googleusercontent.com",
         pathname: "/**",
       },
+      // Demo catalogue photography (lib/demo-product-images.ts).
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
     minimumCacheTTL: 14400,
   },

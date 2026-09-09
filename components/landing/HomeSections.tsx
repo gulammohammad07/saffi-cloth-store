@@ -45,8 +45,8 @@ export default function HomeSections({
           <SectionSkeleton
             eyebrow="The Collection"
             title="Shop by Category"
-            description="Our olfactory families, each a world of its own. Find the note that speaks to you."
-            className="bg-[#F8FCFE]"
+            description="Curated pieces across Men, Women & Kids. Find the style that speaks to you."
+            className="bg-[#F4EFE6]"
             style={{ minHeight: 680 }}
           />
         }
@@ -59,8 +59,8 @@ export default function HomeSections({
           <SectionSkeleton
             eyebrow="Most Loved"
             title="Best Sellers"
-            description="The fragrances our clients return for, again and again."
-            className="bg-[#F8FCFE]"
+            description="The products our clients return for, again and again."
+            className="bg-[#F4EFE6]"
             style={{ minHeight: 820 }}
           />
         }
@@ -72,9 +72,9 @@ export default function HomeSections({
         fallback={
           <SectionSkeleton
             eyebrow="The MD Difference"
-            title="Why Choose Danish Perfumes"
-            description="More than fragrance — a promise of purity, patience and obsession with detail."
-            className="bg-[#F8FCFE]"
+            title="Why Choose Libaas"
+            description="More than clothing — a promise of quality, fit and obsession with detail."
+            className="bg-[#F4EFE6]"
             style={{ minHeight: 1100 }}
           />
         }
@@ -86,9 +86,9 @@ export default function HomeSections({
         fallback={
           <SectionSkeleton
             eyebrow="Word of Mouth"
-            title="Loved by Connoisseurs"
-            description="Real reviews from clients who made Danish Perfumes their signature."
-            className="bg-[#DCEFF7]"
+            title="Loved by Our Customers"
+            description="Real reviews from clients who made Libaas their signature."
+            className="bg-[#E9E1D3]"
             style={{ minHeight: 660 }}
           />
         }
@@ -100,8 +100,8 @@ export default function HomeSections({
         fallback={
           <SectionSkeleton
             eyebrow="Our Story"
-            title="Perfume, the way it was meant to be"
-            className="bg-[#F8FCFE]"
+            title="Clothing, the way it was meant to be"
+            className="bg-[#F4EFE6]"
             style={{ minHeight: 1240 }}
           />
         }

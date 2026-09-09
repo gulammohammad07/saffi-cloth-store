@@ -30,7 +30,7 @@ export function AuthField({
     <div className={className}>
       <label
         htmlFor={id}
-        className="mb-1.5 block text-[11px] font-semibold tracking-[0.14em] text-ink/60 uppercase"
+        className="mb-1.5 block text-xs font-semibold tracking-[0.14em] text-ink/60 uppercase"
       >
         {label}
       </label>
@@ -67,7 +67,7 @@ export function AuthField({
             tabIndex={-1}
             onClick={() => setVisible((v) => !v)}
             aria-label={visible ? "Hide password" : "Show password"}
-            className="absolute top-1/2 right-3.5 -translate-y-1/2 text-ink/35 transition-colors hover:text-ink/70"
+            className="absolute top-1/2 right-3.5 -translate-y-1/2 text-ink/30 transition-colors hover:text-ink/60"
           >
             {visible ? <EyeOff size={16} /> : <Eye size={16} />}
           </button>

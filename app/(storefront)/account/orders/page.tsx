@@ -29,30 +29,30 @@ export default async function AccountOrdersPage() {
   const orders = await getOrdersByUser(user.id);
 
   return (
-    <div className="min-h-screen bg-[#F8FCFE] px-4 py-14 sm:px-8">
+    <div className="min-h-screen bg-[#F4EFE6] px-4 py-14 sm:px-8">
       <div className="mx-auto max-w-4xl">
-        <h1 className="font-display text-4xl font-medium text-[#174A63]">
+        <h1 className="font-display text-3xl font-medium text-ink">
           My Orders
         </h1>
-        <p className="mt-2 text-sm text-[#174A63]/50">
+        <p className="mt-2 text-sm text-ink/60">
           Track purchases & reorder favourites.
         </p>
 
         {orders.length === 0 ? (
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-3xl border border-[#174A63]/10 bg-white px-6 py-16 text-center shadow-sm">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F8FCFE]">
-              <Package className="h-8 w-8 text-[#174A63]/30" />
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-3xl border border-[#1C1A17]/10 bg-white px-6 py-16 text-center shadow-sm">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F4EFE6]">
+              <Package className="h-8 w-8 text-ink/30" />
             </div>
-            <h2 className="font-display text-xl font-medium text-[#174A63]">
+            <h2 className="font-display text-xl font-medium text-ink">
               No orders yet
             </h2>
-            <p className="max-w-sm text-sm text-[#174A63]/45">
+            <p className="max-w-sm text-sm text-ink/60">
               When you place an order, it will appear here so you can track its
               status.
             </p>
             <Link
               href="/shop"
-              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#174A63] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#1C1A17] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gold"
             >
               <ShoppingBag size={16} />
               Browse the collection
@@ -63,11 +63,11 @@ export default async function AccountOrdersPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="overflow-hidden rounded-3xl border border-[#174A63]/10 bg-white shadow-sm"
+                className="overflow-hidden rounded-3xl border border-[#1C1A17]/10 bg-white shadow-sm"
               >
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#174A63]/10 bg-[#F8FCFE]/60 px-6 py-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1C1A17]/10 bg-[#F4EFE6]/60 px-6 py-4">
                   <div>
-                    <p className="font-display text-lg font-medium text-[#174A63]">
+                    <p className="font-display text-base font-medium text-ink">
                       {order.orderNumber}
                     </p>
                     {order.occasion ? (
@@ -75,7 +75,7 @@ export default async function AccountOrdersPage() {
                         {order.occasion}
                       </p>
                     ) : null}
-                    <p className="mt-0.5 text-xs text-[#174A63]/45">
+                    <p className="mt-0.5 text-xs text-ink/60">
                       {order.createdAt.toLocaleDateString("en-GB", {
                         day: "numeric",
                         month: "long",
@@ -85,7 +85,7 @@ export default async function AccountOrdersPage() {
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide uppercase ${
+                      className={`rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${
                         ORDER_STATUS_STYLES[order.status] ??
                         "bg-gray-100 text-gray-600"
                       }`}
@@ -93,7 +93,7 @@ export default async function AccountOrdersPage() {
                       {order.status}
                     </span>
                     <span
-                      className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide uppercase ${
+                      className={`rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${
                         PAYMENT_STATUS_STYLES[order.paymentStatus] ??
                         "bg-gray-100 text-gray-600"
                       }`}
@@ -105,7 +105,7 @@ export default async function AccountOrdersPage() {
                   </div>
                 </div>
 
-                <div className="divide-y divide-[#174A63]/5">
+                <div className="divide-y divide-[#1C1A17]/5">
                   {order.items.map((item) => (
                     <div
                       key={item.id}
@@ -120,41 +120,41 @@ export default async function AccountOrdersPage() {
                             className="h-14 w-14 shrink-0 rounded-xl object-cover"
                           />
                         ) : (
-                          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#F8FCFE]">
-                            <Package size={20} className="text-[#174A63]/30" />
+                          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#F4EFE6]">
+                            <Package size={20} className="text-ink/30" />
                           </div>
                         )}
                         <div className="min-w-0">
-                          <p className="truncate text-sm font-medium text-[#174A63]">
+                          <p className="truncate text-sm font-medium text-ink">
                             {item.productName}
                           </p>
-                          <p className="mt-0.5 text-xs text-[#174A63]/45">
+                          <p className="mt-0.5 text-xs text-ink/60">
                             {formatPrice(item.unitPrice)} × {item.quantity}
                           </p>
                         </div>
                       </div>
-                      <p className="shrink-0 text-sm font-semibold text-[#174A63]">
+                      <p className="shrink-0 text-sm font-semibold text-ink">
                         {formatPrice(item.lineTotal)}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#174A63]/10 px-6 py-4">
-                  <p className="text-xs leading-relaxed text-[#174A63]/45">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#1C1A17]/10 px-6 py-4">
+                  <p className="text-xs leading-relaxed text-ink/60">
                     Deliver to: {order.street}, {order.city}, {order.state}{" "}
                     {order.pincode}
                     <br />
                     {order.customerName} · {order.customerPhone}
                   </p>
                   <div className="text-right text-sm">
-                    <p className="text-[#174A63]/45">
+                    <p className="text-ink/60">
                       Subtotal {formatPrice(order.subtotal)} · Shipping{" "}
                       {order.shippingFee === 0
                         ? "Free"
                         : formatPrice(order.shippingFee)}
                     </p>
-                    <p className="mt-0.5 font-display text-lg font-medium text-[#174A63]">
+                    <p className="mt-0.5 font-display text-base font-medium text-ink">
                       Total {formatPrice(order.total)}
                     </p>
                   </div>

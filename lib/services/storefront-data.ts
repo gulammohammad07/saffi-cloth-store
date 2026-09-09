@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { resolveDemoProductImage } from "@/lib/demo-product-images";
 import type { FragranceNote, Product } from "@/lib/data/products";
 
 function toNote(name: string): FragranceNote {
@@ -23,7 +24,7 @@ function mapDbProduct(
     newArrival: boolean;
     featured: boolean;
     productType: string;
-    category: { name: string };
+    category: { name: string; slug: string };
     brand: { name: string };
     occasions: { name: string }[];
     sizes: { id: string; size: string; price: number; salePrice: number | null; stock: number }[];
@@ -32,6 +33,15 @@ function mapDbProduct(
 ): Product {
   const noteNames =
     (db.notes ?? []).length > 0 ? db.notes : [db.category.name];
+
+  // Demo rows store /demo/*.png silhouette renders; resolve them to real
+  // photography until genuine uploads exist (see lib/demo-product-images.ts).
+  const productType = (db.productType as "MEN" | "WOMEN" | "KIDS") || "MEN";
+  const image = resolveDemoProductImage(
+    db.imageUrl,
+    productType,
+    db.category.slug,
+  );
 
   let badge: Product["badge"];
   if (db.bestSeller) badge = "Bestseller";
@@ -47,7 +57,7 @@ function mapDbProduct(
     slug: db.slug,
     brand: db.brand.name,
     category: db.category.name,
-    productType: (db.productType as "ATTAR" | "PERFUME") || "ATTAR",
+    productType,
     notes: {
       top: noteNames.slice(0, 1).map(toNote),
       heart: noteNames.slice(1, 3).map(toNote),
@@ -58,9 +68,14 @@ function mapDbProduct(
     volume: db.volume,
     price: db.price,
     salePrice: db.salePrice ?? undefined,
-    image: db.imageUrl,
+    image,
     video: db.videoUrl ?? undefined,
-    gallery: db.gallery.length > 0 ? db.gallery : [db.imageUrl],
+    gallery:
+      db.gallery.length > 0
+        ? db.gallery.map((g) =>
+            resolveDemoProductImage(g, productType, db.category.slug),
+          )
+        : [image],
     description: db.description ?? "",
     stock: db.stock,
     rating: reviewStats?.rating ?? 4.5,

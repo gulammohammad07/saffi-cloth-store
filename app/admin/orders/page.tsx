@@ -52,7 +52,7 @@ export default async function OrdersPage({
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         <div className="rounded-2xl border bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">Total Orders</p>
-          <h2 className="mt-3 text-4xl font-bold">{totals.totalOrders}</h2>
+          <h2 className="mt-3 text-3xl font-bold">{totals.totalOrders}</h2>
           <p className="mt-1 text-xs text-gray-400">
             Includes {totals.hiddenCount} hidden from this panel
           </p>
@@ -60,14 +60,14 @@ export default async function OrdersPage({
 
         <div className="rounded-2xl border bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">Revenue (Delivered)</p>
-          <h2 className="mt-3 text-4xl font-bold">
+          <h2 className="mt-3 text-3xl font-bold">
             {formatPrice(totals.deliveredRevenue)}
           </h2>
         </div>
 
         <div className="rounded-2xl border bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">Pending (Not Delivered)</p>
-          <h2 className="mt-3 text-4xl font-bold">
+          <h2 className="mt-3 text-3xl font-bold">
             {formatPrice(totals.pendingRevenue)}
           </h2>
         </div>

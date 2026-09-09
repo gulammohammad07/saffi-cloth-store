@@ -136,18 +136,18 @@ export default function ShopContent({ products }: { products: Product[] }) {
   }, [hasMore, loading]);
 
   return (
-    <div className="min-h-screen bg-[#F8FCFE]">
+    <div className="min-h-screen bg-[#F4EFE6]">
       {/* Page header */}
-      <div className="border-b border-[#174A63]/10 bg-[#E3F2F9]">
+      <div className="border-b border-[#1C1A17]/10 bg-[#EDE6DA]">
         <div className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6">
-          <p className="text-[11px] font-semibold tracking-[0.3em] text-gold uppercase">
+          <p className="text-xs font-semibold tracking-[0.3em] text-gold uppercase">
             The Collection
           </p>
-          <h1 className="mt-3 font-display text-5xl font-medium text-[#174A63]">
-            Shop Attars
+          <h1 className="mt-3 font-display text-5xl font-medium text-ink">
+            Shop Clothing
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm text-[#174A63]/55">
-            {filtered.length} rare blends, hand-poured and ready to wear.
+          <p className="mx-auto mt-4 max-w-md text-sm text-ink/60">
+            {filtered.length} curated styles · ready to ship and ready to wear.
           </p>
         </div>
       </div>
@@ -155,17 +155,17 @@ export default function ShopContent({ products }: { products: Product[] }) {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         {/* Toolbar */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-sm text-[#174A63]/50">
+          <div className="text-sm text-ink/60">
             Showing{" "}
-            <span className="font-semibold text-[#174A63]">
+            <span className="font-semibold text-ink">
               {visibleProducts.length}
             </span>{" "}
-            of {filtered.length} fragrances
+            of {filtered.length} products
           </div>
 
           <div className="flex items-center gap-3">
             {/* Layout toggle */}
-            <div className="flex rounded-full border border-[#174A63]/15 p-1">
+            <div className="flex rounded-full border border-[#1C1A17]/15 p-1">
               <button
                 type="button"
                 onClick={() => setLayout("grid")}
@@ -173,8 +173,8 @@ export default function ShopContent({ products }: { products: Product[] }) {
                 className={cn(
                   "rounded-full p-2 transition-colors",
                   layout === "grid"
-                    ? "bg-[#174A63] text-white"
-                    : "text-[#174A63]/50",
+                    ? "bg-[#1C1A17] text-white"
+                    : "text-ink/60",
                 )}
               >
                 <LayoutGrid size={16} />
@@ -186,8 +186,8 @@ export default function ShopContent({ products }: { products: Product[] }) {
                 className={cn(
                   "rounded-full p-2 transition-colors",
                   layout === "list"
-                    ? "bg-[#174A63] text-white"
-                    : "text-[#174A63]/50",
+                    ? "bg-[#1C1A17] text-white"
+                    : "text-ink/60",
                 )}
               >
                 <List size={16} />
@@ -198,7 +198,7 @@ export default function ShopContent({ products }: { products: Product[] }) {
             <select
               value={sort}
               onChange={(e) => handleSortChange(e.target.value as SortOption)}
-              className="rounded-full border border-[#174A63]/15 bg-white px-4 py-2.5 text-sm font-medium text-[#174A63] focus:border-gold focus:outline-none"
+              className="rounded-full border border-[#1C1A17]/15 bg-white px-4 py-2.5 text-sm font-medium text-ink focus:border-gold focus:outline-none"
               aria-label="Sort products"
             >
               {(Object.keys(SORT_LABELS) as SortOption[]).map((key) => (
@@ -243,10 +243,10 @@ export default function ShopContent({ products }: { products: Product[] }) {
 
         {filtered.length === 0 && (
           <div className="py-24 text-center">
-            <p className="font-display text-3xl font-medium text-[#174A63]">
-              No fragrances found
+            <p className="font-display text-3xl font-medium text-ink">
+              No products found
             </p>
-            <p className="mt-3 text-sm text-[#174A63]/50">
+            <p className="mt-3 text-sm text-ink/60">
               Try a different category or note.
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function ShopContent({ products }: { products: Product[] }) {
         <div ref={sentinelRef} className="h-10" />
 
         {!hasMore && filtered.length > 0 && (
-          <p className="py-8 text-center text-xs tracking-[0.2em] text-[#174A63]/40 uppercase">
+          <p className="py-8 text-center text-xs tracking-[0.2em] text-ink/60 uppercase">
             You&apos;ve reached the end ✦
           </p>
         )}

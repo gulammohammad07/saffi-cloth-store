@@ -27,7 +27,7 @@ import ProductReviews from "@/components/product/ProductReviews";
 import ProductCarousel from "@/components/product/ProductCarousel";
 import type { ReviewAggregate } from "@/lib/actions/review.actions";
 
-const tabs = ["Description", "Fragrance Notes", "Reviews", "Shipping"] as const;
+const tabs = ["Description", "Details", "Reviews", "Shipping"] as const;
 
 export default function ProductDetails({
   product,
@@ -121,10 +121,10 @@ export default function ProductDetails({
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8FCFE] pb-20">
+    <div className="min-h-screen bg-[#F4EFE6] pb-20">
       {/* Breadcrumb */}
       <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
-        <nav className="flex items-center gap-2 text-xs text-[#174A63]/45">
+        <nav className="flex items-center gap-2 text-xs text-ink/60">
           <Link href="/" className="hover:text-gold">
             Home
           </Link>
@@ -140,7 +140,7 @@ export default function ProductDetails({
             {product.category}
           </Link>
           <span>/</span>
-          <span className="font-medium text-[#174A63]">{product.name}</span>
+          <span className="font-medium text-ink">{product.name}</span>
         </nav>
       </div>
 
@@ -162,11 +162,11 @@ export default function ProductDetails({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p className="text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            <p className="text-xs font-semibold tracking-[0.25em] text-gold uppercase">
               {product.brand}
             </p>
 
-            <h1 className="mt-3 font-display text-4xl font-medium text-[#174A63] sm:text-5xl">
+            <h1 className="mt-3 font-display text-3xl font-medium text-ink sm:text-5xl">
               {product.name}
             </h1>
 
@@ -180,27 +180,27 @@ export default function ProductDetails({
                     className={
                       i < Math.round(displayRating)
                         ? "fill-gold text-gold"
-                        : "text-[#174A63]/20"
+                        : "text-ink/30"
                     }
                   />
                 ))}
               </div>
-              <span className="text-sm font-medium text-[#174A63]">
+              <span className="text-sm font-medium text-ink">
                 {displayRating}
               </span>
-              <span className="text-sm text-[#174A63]/45">
+              <span className="text-sm text-ink/60">
                 ({displayReviewCount} reviews)
               </span>
             </div>
 
             {/* Price */}
             <div className="mt-6 flex items-center gap-3">
-              <span className="text-3xl font-semibold text-[#174A63]">
+              <span className="text-3xl font-semibold text-ink">
                 {formatPrice(price)}
               </span>
               {product.salePrice && (
                 <>
-                  <span className="text-xl text-[#174A63]/35 line-through">
+                  <span className="text-xl text-ink/30 line-through">
                     {formatPrice(product.price)}
                   </span>
                   <span className="rounded-full bg-red-100 px-2.5 py-1 text-xs font-bold text-red-600">
@@ -227,9 +227,9 @@ export default function ProductDetails({
                     "In stock — ready to ship"
                   )}
                 </span>
-                <span className="text-[#174A63]/40">{stockPercent}%</span>
+                <span className="text-ink/60">{stockPercent}%</span>
               </div>
-              <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#174A63]/10">
+              <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#1C1A17]/10">
                 <div
                   className={cn(
                     "h-full rounded-full",
@@ -241,7 +241,7 @@ export default function ProductDetails({
             </div>
 
             {/* Description */}
-            <p className="mt-6 text-sm leading-relaxed text-[#174A63]/65">
+            <p className="mt-6 text-sm leading-relaxed text-ink/60">
               {product.description}
             </p>
 
@@ -249,13 +249,17 @@ export default function ProductDetails({
             <div className="mt-5 flex flex-wrap gap-2">
             {[
               product.volume,
-              product.gender,
+              product.productType === "MEN"
+                ? "Men"
+                : product.productType === "WOMEN"
+                  ? "Women"
+                  : "Kids",
               product.category,
               ...product.occasions,
             ].map((tag, idx) => (
               <span
                 key={`${tag}-${idx}`}
-                className="rounded-full border border-[#174A63]/15 px-3 py-1 text-xs text-[#174A63]/60"
+                className="rounded-full border border-[#1C1A17]/15 px-3 py-1 text-xs text-ink/60"
               >
                 {tag}
               </span>
@@ -274,8 +278,8 @@ export default function ProductDetails({
                       onClick={() => setSelectedSize(sizeItem.size)}
                       className={`rounded-full border px-4 py-2 text-sm transition-colors ${
                         selectedSize === sizeItem.size
-                          ? "border-[#0f2838] bg-[#0f2838] text-white"
-                          : "border-[#174A63]/20 bg-white text-[#174A63] hover:border-gold"
+                          ? "border-[#131110] bg-[#131110] text-white"
+                          : "border-[#1C1A17]/20 bg-white text-ink hover:border-gold"
                       }`}
                     >
                       {sizeItem.size}
@@ -286,27 +290,27 @@ export default function ProductDetails({
                   ))}
                 </div>
                 {!selectedSize && (
-                  <p className="mt-2 text-xs text-[#174A63]/50">Please select a size</p>
+                  <p className="mt-2 text-xs text-ink/60">Please select a size</p>
                 )}
               </div>
             )}
 
             {/* Quantity + CTA */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <div className="flex items-center justify-between rounded-full border border-[#174A63]/20 px-5 sm:w-36">
+              <div className="flex items-center justify-between rounded-full border border-[#1C1A17]/20 px-5 sm:w-36">
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="py-4 text-[#174A63]/60"
+                  className="py-4 text-ink/60"
                   aria-label="Decrease quantity"
                 >
                   <Minus size={16} />
                 </button>
-                <span className="font-semibold text-[#174A63]">{quantity}</span>
+                <span className="font-semibold text-ink">{quantity}</span>
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="py-4 text-[#174A63]/60"
+                  className="py-4 text-ink/60"
                   aria-label="Increase quantity"
                 >
                   <Plus size={16} />
@@ -316,7 +320,7 @@ export default function ProductDetails({
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#174A63] py-4 text-sm font-semibold text-white transition-colors hover:bg-gold"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#1C1A17] py-4 text-sm font-semibold text-white transition-colors hover:bg-gold"
               >
                 <ShoppingBag size={18} />
                 Add to Bag — {formatPrice(displayPrice * quantity)}
@@ -327,7 +331,7 @@ export default function ProductDetails({
               <Link
                 href="/checkout"
                 onClick={handleAddToCart}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-[#174A63] py-3.5 text-sm font-semibold text-[#174A63] transition-colors hover:bg-[#174A63] hover:text-white"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-[#1C1A17] py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-[#1C1A17] hover:text-white"
               >
                 <Zap size={16} />
                 Buy Now
@@ -341,7 +345,7 @@ export default function ProductDetails({
                   "flex h-12 w-12 items-center justify-center rounded-full border-2 transition-colors",
                   wished
                     ? "border-red-200 bg-red-50 text-red-500"
-                    : "border-[#174A63]/20 text-[#174A63]/60 hover:border-gold hover:text-gold",
+                    : "border-[#1C1A17]/20 text-ink/60 hover:border-gold hover:text-gold",
                 )}
               >
                 <Heart size={18} fill={wished ? "currentColor" : "none"} />
@@ -351,7 +355,7 @@ export default function ProductDetails({
                 type="button"
                 onClick={share}
                 aria-label="Share product"
-                className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#174A63]/20 text-[#174A63]/60 transition-colors hover:border-gold hover:text-gold"
+                className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#1C1A17]/20 text-ink/60 transition-colors hover:border-gold hover:text-gold"
               >
                 <Share2 size={18} />
               </button>
@@ -359,32 +363,32 @@ export default function ProductDetails({
 
             {/* Delivery info */}
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#174A63]/10 bg-white p-4">
+              <div className="rounded-2xl border border-[#1C1A17]/10 bg-white p-4">
                 <Truck size={18} className="text-gold" />
-                <p className="mt-2 text-xs font-semibold text-[#174A63]">
+                <p className="mt-2 text-xs font-semibold text-ink">
                   Free Delivery
                 </p>
-                <p className="mt-0.5 text-[11px] text-[#174A63]/45">
+                <p className="mt-0.5 text-xs text-ink/60">
                   Arrives by {deliveryDate}
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-[#174A63]/10 bg-white p-4">
+              <div className="rounded-2xl border border-[#1C1A17]/10 bg-white p-4">
                 <RefreshCcw size={18} className="text-gold" />
-                <p className="mt-2 text-xs font-semibold text-[#174A63]">
+                <p className="mt-2 text-xs font-semibold text-ink">
                   NO Returns
                 </p>
-                <p className="mt-0.5 text-[11px] text-[#174A63]/45">
+                <p className="mt-0.5 text-xs text-ink/60">
                   {/* 14-day return window */}
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-[#174A63]/10 bg-white p-4">
+              <div className="rounded-2xl border border-[#1C1A17]/10 bg-white p-4">
                 <Check size={18} className="text-gold" />
-                <p className="mt-2 text-xs font-semibold text-[#174A63]">
+                <p className="mt-2 text-xs font-semibold text-ink">
                   Authentic
                 </p>
-                <p className="mt-0.5 text-[11px] text-[#174A63]/45">
+                <p className="mt-0.5 text-xs text-ink/60">
                   Certified genuine
                 </p>
               </div>
@@ -394,7 +398,7 @@ export default function ProductDetails({
 
         {/* Tabs */}
         <div className="mt-20">
-          <div className="flex gap-8 overflow-x-auto border-b border-[#174A63]/15 [scrollbar-width:none]">
+          <div className="flex gap-8 overflow-x-auto border-b border-[#1C1A17]/15 [scrollbar-width:none]">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -403,8 +407,8 @@ export default function ProductDetails({
                 className={cn(
                   "relative whitespace-nowrap pb-4 text-sm font-semibold tracking-wide transition-colors",
                   activeTab === tab
-                    ? "text-[#174A63]"
-                    : "text-[#174A63]/40 hover:text-[#174A63]/70",
+                    ? "text-ink"
+                    : "text-ink/60 hover:text-ink/60",
                 )}
               >
                 {tab}
@@ -423,24 +427,28 @@ export default function ProductDetails({
           <div className="py-10">
             {activeTab === "Description" && (
               <div className="max-w-3xl space-y-5">
-                <p className="leading-relaxed text-[#174A63]/70">
+                <p className="leading-relaxed text-ink/60">
                   {product.description}
                 </p>
-                <p className="leading-relaxed text-[#174A63]/70">
+                <p className="leading-relaxed text-ink/60">
                   A{" "}
-                  <span className="font-medium text-[#174A63]">
+                  <span className="font-medium text-ink">
                     {product.category.toLowerCase()}
                   </span>{" "}
-                  composition from {product.brand}, crafted for{" "}
-                  {product.gender.toLowerCase()} with {product.volume} of
-                  concentrated perfume oil. {product.category} attars are
-                  alcohol-free and designed to sit close to the skin, revealing
-                  new facets throughout the day.
+                  piece from {product.brand}, crafted for{" "}
+                  {product.productType === "MEN"
+                    ? "men"
+                    : product.productType === "WOMEN"
+                      ? "women"
+                      : "kids"}{" "}
+                  in {product.volume.toLowerCase()}. Premium fabrics,
+                  true-to-size fit and finishes that are made to be worn and
+                  loved every day.
                 </p>
               </div>
             )}
 
-            {activeTab === "Fragrance Notes" && (
+            {activeTab === "Details" && (
               <div className="max-w-2xl">
                 <NotesPyramid notes={product.notes} />
               </div>
@@ -455,9 +463,9 @@ export default function ProductDetails({
             )}
 
             {activeTab === "Shipping" && (
-              <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-[#174A63]/70">
+              <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-ink/60">
                 <p>
-                  <span className="font-semibold text-[#174A63]">
+                  <span className="font-semibold text-ink">
                     Delivery:{" "}
                   </span>
                   Dispatched within 24 hours. Free standard shipping on orders
@@ -465,12 +473,12 @@ export default function ProductDetails({
                   available at checkout.
                 </p>
                 <p>
-                  <span className="font-semibold text-[#174A63]">Returns: </span>
+                  <span className="font-semibold text-ink">Returns: </span>
                   Unopened items may be returned within 14 days for a full
                   refund.
                 </p>
                 <p>
-                  <span className="font-semibold text-[#174A63]">
+                  <span className="font-semibold text-ink">
                     Gift Packaging:{" "}
                   </span>
                   Complimentary premium gift wrapping with every order.

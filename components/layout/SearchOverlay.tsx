@@ -8,7 +8,7 @@ import { Mic, Search, TrendingUp, X } from "lucide-react";
 import type { Product } from "@/lib/data/products";
 import { formatPrice } from "@/lib/utils";
 
-const popularSearches = ["Oud", "Musk", "Rose", "Amber", "Vanilla", "Gift"];
+const popularSearches = ["Kurta", "Saree", "Dress", "Jeans", "Shirt", "Gift"];
 
 type SpeechRecognitionLike = {
   lang: string;
@@ -104,8 +104,8 @@ export default function SearchOverlay({
                   autoFocus
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search by fragrance, note, brand..."
-                  className="flex-1 bg-transparent text-lg text-[#F8FCFE] placeholder:text-[#F8FCFE]/40 focus:outline-none"
+                  placeholder="Search by product, category or brand..."
+                  className="flex-1 bg-transparent text-base text-cream placeholder:text-cream/60 focus:outline-none"
                 />
                 <button
                   type="button"
@@ -113,7 +113,7 @@ export default function SearchOverlay({
                   className={`rounded-full p-2 transition-colors ${
                     listening
                       ? "bg-gold text-white"
-                      : "text-[#F8FCFE]/60 hover:text-gold"
+                      : "text-cream/60 hover:text-gold"
                   }`}
                   aria-label="Voice search"
                 >
@@ -122,7 +122,7 @@ export default function SearchOverlay({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="text-[#F8FCFE]/60 hover:text-white"
+                  className="text-cream/60 hover:text-white"
                   aria-label="Close search"
                 >
                   <X size={20} />
@@ -138,7 +138,7 @@ export default function SearchOverlay({
 
               {query.trim().length === 0 ? (
                 <div className="mt-5">
-                  <p className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#F8FCFE]/50 uppercase">
+                  <p className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-cream/60 uppercase">
                     <TrendingUp size={14} /> Popular searches
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -147,7 +147,7 @@ export default function SearchOverlay({
                         key={term}
                         type="button"
                         onClick={() => setQuery(term)}
-                        className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-[#F8FCFE]/80 transition-colors hover:border-gold hover:text-gold"
+                        className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-cream/60 transition-colors hover:border-gold hover:text-gold"
                       >
                         {term}
                       </button>
@@ -155,13 +155,13 @@ export default function SearchOverlay({
                   </div>
                 </div>
               ) : searching && results.length === 0 ? (
-                <p className="mt-6 flex items-center gap-2 text-sm text-[#F8FCFE]/60">
+                <p className="mt-6 flex items-center gap-2 text-sm text-cream/60">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-gold" />
                   Searching the collection...
                 </p>
               ) : results.length === 0 ? (
-                <p className="mt-6 text-sm text-[#F8FCFE]/60">
-                  No results for &quot;{query}&quot;. Try &quot;Oud&quot; or &quot;Musk&quot;.
+                <p className="mt-6 text-sm text-cream/60">
+                  No results for &quot;{query}&quot;. Try &quot;Kurta&quot; or &quot;Saree&quot;.
                 </p>
               ) : (
                 <ul className="mt-5 space-y-3">
@@ -182,10 +182,10 @@ export default function SearchOverlay({
                           />
                         </div>
                         <div className="flex-1">
-                          <p className="font-medium text-[#F8FCFE]">
+                          <p className="font-medium text-cream">
                             {product.name}
                           </p>
-                          <p className="text-xs text-[#F8FCFE]/50">
+                          <p className="text-xs text-cream/60">
                             {product.brand} • {product.category}
                           </p>
                         </div>

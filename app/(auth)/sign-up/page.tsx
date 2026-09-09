@@ -4,7 +4,7 @@ import { SignUpForm } from "@/components/auth/SignUpForm";
 
 export const metadata: Metadata = {
   title: "Create Account",
-  description: "Create your Danish Perfumes account to track orders, manage your wishlist and unlock member offers.",
+  description: "Create your Libaas account to track orders, manage your wishlist and unlock member offers.",
 };
 
 export default function SignUpPage() {

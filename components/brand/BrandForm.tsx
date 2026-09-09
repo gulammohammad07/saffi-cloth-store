@@ -32,14 +32,14 @@ export default function BrandForm() {
       <div className="grid gap-5 md:grid-cols-2">
         <input
           name="name"
-          placeholder="Danish Perfumes"
+          placeholder="Libaas"
           required
           className="rounded-lg border p-3"
         />
 
         <input
           name="slug"
-          placeholder="danish-perfumes"
+          placeholder="libaas"
           required
           className="rounded-lg border p-3"
         />

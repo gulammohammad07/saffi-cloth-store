@@ -9,28 +9,28 @@ import type { Product } from "@/lib/data/products";
 
 const gradients = [
   {
-    from: "#DCCDA6",
-    to: "#C9A96E",
+    from: "#D6A383",
+    to: "#BC4E22",
     text: "Worn like a memory, never a mask.",
     tag: "MD · Philosophy",
   },
   {
-    from: "#E3F2F9",
+    from: "#EDE6DA",
     to: "#D5C097",
     text: "One drop, an entire evening.",
-    tag: "@attar.diaries",
+    tag: "@sana.styles",
   },
   {
-    from: "#C9A96E",
-    to: "#A18758",
+    from: "#BC4E22",
+    to: "#93371A",
     text: "The scent of a golden hour.",
-    tag: "@scentandstory",
+    tag: "@style.diaries",
   },
   {
-    from: "#DCEFF7",
-    to: "#C9A96E",
+    from: "#E9E1D3",
+    to: "#BC4E22",
     text: "Layered, never loud.",
-    tag: "@theoudlistener",
+    tag: "@style.atlas",
   },
 ];
 
@@ -38,22 +38,22 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
   const images = products.flatMap((p) => p.gallery);
 
   const tiles = [
-    { kind: "image" as const, src: images[0], ratio: "aspect-[3/4]", handle: "@scentandstory", likes: "2,4k", link: products[0]?.slug, name: products[0]?.name },
+    { kind: "image" as const, src: images[0], ratio: "aspect-[3/4]", handle: "@style.diaries", likes: "2,4k", link: products[0]?.slug, name: products[0]?.name },
     { kind: "quote" as const, ratio: "aspect-[4/5]", ...gradients[0] },
-    { kind: "image" as const, src: images[1], ratio: "aspect-[4/3]", handle: "@theoudlistener", likes: "1,8k", link: products[1]?.slug, name: products[1]?.name },
-    { kind: "image" as const, src: images[2], ratio: "aspect-[3/4]", handle: "@attar.diaries", likes: "3,1k", link: products[2]?.slug, name: products[2]?.name },
+    { kind: "image" as const, src: images[1], ratio: "aspect-[4/3]", handle: "@style.atlas", likes: "1,8k", link: products[1]?.slug, name: products[1]?.name },
+    { kind: "image" as const, src: images[2], ratio: "aspect-[3/4]", handle: "@sana.styles", likes: "3,1k", link: products[2]?.slug, name: products[2]?.name },
     { kind: "quote" as const, ratio: "aspect-[4/5]", ...gradients[1] },
     { kind: "image" as const, src: images[3], ratio: "aspect-square", handle: "@goldenhourfrag", likes: "5,6k", link: products[1]?.slug, name: products[1]?.name },
-    { kind: "image" as const, src: images[4], ratio: "aspect-[4/5]", handle: "@scentedstories", likes: "2,9k", link: products[2]?.slug, name: products[2]?.name },
+    { kind: "image" as const, src: images[4], ratio: "aspect-[4/5]", handle: "@styledbykeya", likes: "2,9k", link: products[2]?.slug, name: products[2]?.name },
     { kind: "quote" as const, ratio: "aspect-[3/4]", ...gradients[2] },
-    { kind: "image" as const, src: images[5], ratio: "aspect-[4/3]", handle: "@oud.rhapsody", likes: "4,2k", link: products[0]?.slug, name: products[0]?.name },
+    { kind: "image" as const, src: images[5], ratio: "aspect-[4/3]", handle: "@everyday.chic", likes: "4,2k", link: products[0]?.slug, name: products[0]?.name },
     { kind: "quote" as const, ratio: "aspect-[4/5]", ...gradients[3] },
-    { kind: "image" as const, src: images[0], ratio: "aspect-square", handle: "@perfumepoetry", likes: "6,8k", link: products[2]?.slug, name: products[2]?.name },
-    { kind: "image" as const, src: images[1], ratio: "aspect-[3/4]", handle: "@attarnarratives", likes: "1,5k", link: products[1]?.slug, name: products[1]?.name },
+    { kind: "image" as const, src: images[0], ratio: "aspect-square", handle: "@threadandtale", likes: "6,8k", link: products[2]?.slug, name: products[2]?.name },
+    { kind: "image" as const, src: images[1], ratio: "aspect-[3/4]", handle: "@clothandco", likes: "1,5k", link: products[1]?.slug, name: products[1]?.name },
   ];
 
   return (
-    <section className="bg-[#E3F2F9] py-24">
+    <section className="bg-[#EDE6DA] py-24">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,11 +67,11 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
             <InstagramIcon size={16} className="text-gold" />
             <span className="h-px w-12 bg-gold" />
           </div>
-          <h2 className="mt-4 font-display text-5xl font-medium text-[#174A63] sm:text-6xl">
+          <h2 className="mt-4 font-display text-5xl font-medium text-ink sm:text-6xl">
             From the Community
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-sm text-[#174A63]/45">
-            Tag <span className="text-gold">#MDAttar</span> to be featured in
+          <p className="mx-auto mt-4 max-w-md text-sm text-ink/60">
+            Tag <span className="text-gold">#StyledWithLibaas</span> to be featured in
             the gallery.
           </p>
         </motion.div>
@@ -86,19 +86,19 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
-                  className="relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 shadow-[0_20px_50px_-24px_rgba(23,74,99,0.3)]"
+                  className="relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 shadow-[0_20px_50px_-24px_rgba(28,26,23,0.3)]"
                   style={{
                     background: `linear-gradient(135deg, ${tile.from}, ${tile.to})`,
                   }}
                 >
                   <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
-                  <span className="font-display text-5xl leading-none text-white/40">
+                  <span className="font-display text-5xl leading-none text-white/60">
                     &ldquo;
                   </span>
                   <p className="mt-2 font-display text-2xl font-medium leading-snug text-white">
                     {tile.text}
                   </p>
-                  <p className="mt-6 text-[10px] font-semibold tracking-[0.22em] text-white/70 uppercase">
+                  <p className="mt-6 text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">
                     {tile.tag}
                   </p>
                 </motion.div>
@@ -112,17 +112,17 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
-                className="group relative overflow-hidden rounded-3xl shadow-[0_20px_50px_-24px_rgba(23,74,99,0.3)]"
+                className="group relative overflow-hidden rounded-3xl shadow-[0_20px_50px_-24px_rgba(28,26,23,0.3)]"
               >
                 <Link
                   href={tile.link ? `/product/${tile.link}` : "/shop"}
                   className="block"
                 >
-                  <div className={`relative w-full ${tile.ratio} bg-gradient-to-b from-[#F4FAFD] to-[#D9EAF3]`}>
+                  <div className={`relative w-full ${tile.ratio} bg-gradient-to-b from-[#F1EBE1] to-[#D9EAF3]`}>
                     {tile.src && (
                       <Image
                         src={tile.src}
-                        alt={tile.name ?? "Community fragrance"}
+                        alt={tile.name ?? "Community style"}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         className="object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-110"
@@ -130,11 +130,11 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
                     )}
 
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#174A63]/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-400 group-hover:opacity-100">
-                      <p className="font-display text-lg font-semibold text-[#F8FCFE]">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#1C1A17]/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-400 group-hover:opacity-100">
+                      <p className="font-display text-base font-semibold text-cream">
                         {tile.name}
                       </p>
-                      <div className="flex items-center gap-5 text-xs text-[#F8FCFE]/90">
+                      <div className="flex items-center gap-5 text-xs text-cream">
                         <span className="flex items-center gap-1.5">
                           <Heart size={13} className="fill-gold text-gold" />
                           {tile.likes}
@@ -147,7 +147,7 @@ export default function CommunityGallery({ products }: { products: Product[] }) 
                     </div>
 
                     {/* Handle */}
-                    <span className="absolute bottom-4 left-4 rounded-full bg-white/70 px-3 py-1 text-[9px] font-semibold tracking-[0.14em] text-[#174A63]/70 uppercase backdrop-blur-md">
+                    <span className="absolute bottom-4 left-4 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold tracking-[0.14em] text-ink/60 uppercase backdrop-blur-md">
                       {tile.handle}
                     </span>
                   </div>
