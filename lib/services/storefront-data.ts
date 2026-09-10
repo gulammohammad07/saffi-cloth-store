@@ -107,37 +107,47 @@ export type StorefrontBanner = {
 };
 
 export async function getStorefrontCategories(): Promise<StorefrontCategory[]> {
-  const dbCategories = await prisma.category.findMany({
-    where: { isActive: true },
-    orderBy: { createdAt: "asc" },
-  });
+  try {
+    const dbCategories = await prisma.category.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: "asc" },
+    });
 
-  return dbCategories.map((category) => ({
-    id: category.id,
-    name: category.name,
-    slug: category.slug,
-    imageUrl: category.imageUrl,
-    tagline: category.description,
-  }));
+    return dbCategories.map((category) => ({
+      id: category.id,
+      name: category.name,
+      slug: category.slug,
+      imageUrl: category.imageUrl,
+      tagline: category.description,
+    }));
+  } catch (error) {
+    console.warn("Could not fetch storefront categories from database:", error);
+    return [];
+  }
 }
 
 export async function getStorefrontBanners(): Promise<StorefrontBanner[]> {
-  const dbBanners = await prisma.banner.findMany({
-    where: { isActive: true },
-    orderBy: { createdAt: "asc" },
-  });
+  try {
+    const dbBanners = await prisma.banner.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: "asc" },
+    });
 
-  return dbBanners.map((banner) => ({
-    id: banner.id,
-    section: banner.section,
-    title: banner.title,
-    subtitle: banner.subtitle,
-    description: banner.description,
-    desktopImageUrl: banner.desktopImageUrl,
-    tabletImageUrl: banner.tabletImageUrl,
-    mobileImageUrl: banner.mobileImageUrl,
-    linkUrl: banner.linkUrl,
-  }));
+    return dbBanners.map((banner) => ({
+      id: banner.id,
+      section: banner.section,
+      title: banner.title,
+      subtitle: banner.subtitle,
+      description: banner.description,
+      desktopImageUrl: banner.desktopImageUrl,
+      tabletImageUrl: banner.tabletImageUrl,
+      mobileImageUrl: banner.mobileImageUrl,
+      linkUrl: banner.linkUrl,
+    }));
+  } catch (error) {
+    console.warn("Could not fetch storefront banners from database:", error);
+    return [];
+  }
 }
 
 export async function getStorefrontProducts(): Promise<Product[]> {
@@ -187,34 +197,39 @@ export async function getStorefrontProducts(): Promise<Product[]> {
 export async function getStorefrontProductBySlug(
   slug: string,
 ): Promise<Product | undefined> {
-  const dbProduct = await prisma.product.findFirst({
-    where: { slug, isActive: true },
-    include: {
-      category: true,
-      brand: true,
-      occasions: true,
-      sizes: true,
-    },
-  });
-
-  if (dbProduct) {
-    const reviewAgg = await prisma.review.aggregate({
-      where: { productId: dbProduct.id },
-      _count: { id: true },
-      _avg: { rating: true },
+  try {
+    const dbProduct = await prisma.product.findFirst({
+      where: { slug, isActive: true },
+      include: {
+        category: true,
+        brand: true,
+        occasions: true,
+        sizes: true,
+      },
     });
-    return mapDbProduct(
-      dbProduct,
-      reviewAgg._count.id > 0
-        ? {
-            rating: Math.round((reviewAgg._avg.rating ?? 4.5) * 10) / 10,
-            count: reviewAgg._count.id,
-          }
-        : null,
-    );
-  }
 
-  return undefined;
+    if (dbProduct) {
+      const reviewAgg = await prisma.review.aggregate({
+        where: { productId: dbProduct.id },
+        _count: { id: true },
+        _avg: { rating: true },
+      });
+      return mapDbProduct(
+        dbProduct,
+        reviewAgg._count.id > 0
+          ? {
+              rating: Math.round((reviewAgg._avg.rating ?? 4.5) * 10) / 10,
+              count: reviewAgg._count.id,
+            }
+          : null,
+      );
+    }
+
+    return undefined;
+  } catch (error) {
+    console.warn(`Could not fetch storefront product for slug "${slug}":`, error);
+    return undefined;
+  }
 }
 
 export async function getStorefrontRelated(
