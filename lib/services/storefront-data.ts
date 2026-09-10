@@ -141,38 +141,47 @@ export async function getStorefrontBanners(): Promise<StorefrontBanner[]> {
 }
 
 export async function getStorefrontProducts(): Promise<Product[]> {
-  const dbProducts = await prisma.product.findMany({
-    where: { isActive: true },
-    include: {
-      category: true,
-      brand: true,
-      occasions: true,
-      sizes: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  if (!process.env.DATABASE_URL || process.env.DATABASE_URL === "undefined") {
+    return [];
+  }
 
-  // Live ratings: average + count of real customer reviews per product.
-  const reviewAggs = await prisma.review.groupBy({
-    by: ["productId"],
-    _count: { id: true },
-    _avg: { rating: true },
-  });
-  const reviewStats = new Map(
-    reviewAggs.map((agg) => [
-      agg.productId,
-      {
-        rating: Math.round((agg._avg.rating ?? 4.5) * 10) / 10,
-        count: agg._count.id,
+  try {
+    const dbProducts = await prisma.product.findMany({
+      where: { isActive: true },
+      include: {
+        category: true,
+        brand: true,
+        occasions: true,
+        sizes: true,
       },
-    ]),
-  );
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-  return dbProducts.map((dbProduct) =>
-    mapDbProduct(dbProduct, reviewStats.get(dbProduct.id)),
-  );
+    // Live ratings: average + count of real customer reviews per product.
+    const reviewAggs = await prisma.review.groupBy({
+      by: ["productId"],
+      _count: { id: true },
+      _avg: { rating: true },
+    });
+    const reviewStats = new Map(
+      reviewAggs.map((agg) => [
+        agg.productId,
+        {
+          rating: Math.round((agg._avg.rating ?? 4.5) * 10) / 10,
+          count: agg._count.id,
+        },
+      ]),
+    );
+
+    return dbProducts.map((dbProduct) =>
+      mapDbProduct(dbProduct, reviewStats.get(dbProduct.id)),
+    );
+  } catch (error) {
+    console.warn("Could not fetch storefront products from database:", error);
+    return [];
+  }
 }
 
 export async function getStorefrontProductBySlug(
