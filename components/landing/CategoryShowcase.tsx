@@ -110,11 +110,11 @@ const TiltCard = memo(function TiltCard({
           style={
             tiltOk
               ? {
-                  rotateX,
-                  rotateY,
-                  transformStyle: "preserve-3d",
-                  perspective: 1000,
-                }
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+                perspective: 1000,
+              }
               : undefined
           }
           className="relative overflow-hidden rounded-[2.5rem] border border-gold/15 bg-white shadow-[0_24px_60px_-20px_rgba(19,17,16,0.15)] transition-all duration-700 group-hover:border-gold/50 group-hover:shadow-[0_40px_80px_-30px_rgba(188,78,34,0.25)]"

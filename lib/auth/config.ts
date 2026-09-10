@@ -18,8 +18,11 @@ export type Role = (typeof ROLES)[keyof typeof ROLES];
 
 export function getAuthSecret(): string {
   const secret = process.env.AUTH_SECRET;
-  if (!secret) {
+  if (!secret || secret === "undefined") {
     if (process.env.NODE_ENV === "production") {
+      if (process.env.NEXT_PHASE === "phase-production-build") {
+        return "build-time-secret-placeholder-do-not-use-in-production";
+      }
       throw new Error(
         "AUTH_SECRET is not set. Generate one with `openssl rand -base64 32`.",
       );
@@ -30,13 +33,26 @@ export function getAuthSecret(): string {
 }
 
 export function getAppUrl(): string {
-  return (
-    process.env.AUTH_URL ??
-    process.env.NEXT_PUBLIC_APP_URL ??
-    (process.env.NODE_ENV === "production"
-      ? "http://localhost:3000"
-      : "http://localhost:3000")
-  );
+  const envUrl = (
+    process.env.AUTH_URL ||
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : null) ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+    "http://localhost:3000"
+  ).trim();
+
+  if (!envUrl || envUrl === "undefined") {
+    return "http://localhost:3000";
+  }
+
+  const withProtocol =
+    envUrl.startsWith("http://") || envUrl.startsWith("https://")
+      ? envUrl
+      : `https://${envUrl}`;
+
+  return withProtocol.replace(/\/+$/, "");
 }
 
 export function isGoogleOAuthConfigured(): boolean {

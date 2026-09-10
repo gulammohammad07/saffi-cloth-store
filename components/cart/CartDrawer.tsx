@@ -157,7 +157,7 @@ export default function CartDrawer() {
                             <p className="font-semibold text-ink">
                               {formatPrice(
                                 (product.salePrice ?? product.price) *
-                                  quantity,
+                                quantity,
                               )}
                             </p>
                           </div>

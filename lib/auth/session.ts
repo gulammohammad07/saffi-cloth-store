@@ -23,7 +23,9 @@ export type SessionPayload = SessionUser & {
   expiresAt: Date;
 };
 
-const encodedKey = new TextEncoder().encode(getAuthSecret());
+function getEncodedKey(): Uint8Array {
+  return new TextEncoder().encode(getAuthSecret());
+}
 
 export async function encryptSession(
   payload: Omit<SessionPayload, "expiresAt">,
@@ -33,13 +35,13 @@ export async function encryptSession(
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime(expiresAt)
-    .sign(encodedKey);
+    .sign(getEncodedKey());
 }
 
 export async function decryptSession(token: string | undefined | null) {
   if (!token) return null;
   try {
-    const { payload } = await jwtVerify(token, encodedKey, {
+    const { payload } = await jwtVerify(token, getEncodedKey(), {
       algorithms: ["HS256"],
     });
     if (!payload || typeof payload.id !== "string") return null;
