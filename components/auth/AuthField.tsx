@@ -49,6 +49,8 @@ export function AuthField({
           id={id}
           type={resolvedType}
           aria-invalid={Boolean(error)}
+          {...props}
+          suppressHydrationWarning
           className={`h-12 w-full rounded-xl border bg-cream/60 text-sm text-ink transition-all outline-none placeholder:text-ink/30 focus:bg-white focus:ring-4 ${
             Icon ? "pr-4 pl-11" : "px-4"
           } ${
@@ -58,7 +60,6 @@ export function AuthField({
               ? "border-destructive/60 focus:border-destructive focus:ring-destructive/10"
               : "border-ink/12 focus:border-gold focus:ring-gold/15"
           } ${inputClassName ?? ""}`}
-          {...props}
         />
 
         {isPassword ? (

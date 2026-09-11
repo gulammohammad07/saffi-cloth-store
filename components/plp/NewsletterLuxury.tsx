@@ -109,6 +109,7 @@ export default function NewsletterLuxury() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
+                  suppressHydrationWarning
                   className="w-full rounded-full border border-gold/30 bg-white/70 px-6 py-4 text-sm text-ink placeholder:text-ink/30 shadow-[inset_0_1px_3px_rgba(28,26,23,0.06)] backdrop-blur-md transition-all focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25"
                 />
               </div>

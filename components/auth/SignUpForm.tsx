@@ -51,7 +51,9 @@ export function SignUpForm() {
       toast.error("Google sign-up didn't complete. Please try again.");
     } else if (oauthError === "google-not-configured") {
       toast.error(
-        "Google sign-up isn't configured yet. Use your email instead.",
+        process.env.NODE_ENV === "production"
+          ? "Google sign-up isn't available right now. Use your email instead."
+          : "Google sign-up isn't configured. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in .env (see .env.example), then restart the dev server.",
       );
     }
   }, [oauthError]);

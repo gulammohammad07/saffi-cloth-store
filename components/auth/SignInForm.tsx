@@ -54,7 +54,9 @@ export function SignInForm() {
       toast.error("Google sign-in didn't complete. Please try again.");
     } else if (oauthError === "google-not-configured") {
       toast.error(
-        "Google sign-in isn't configured yet. Use your email instead.",
+        process.env.NODE_ENV === "production"
+          ? "Google sign-in isn't available right now. Use your email instead."
+          : "Google sign-in isn't configured. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in .env (see .env.example), then restart the dev server.",
       );
     }
   }, [oauthError]);
@@ -109,6 +111,7 @@ export function SignInForm() {
           <label className="flex items-center gap-2 text-sm text-ink/60">
             <input
               type="checkbox"
+              suppressHydrationWarning
               className="h-4 w-4 rounded border-ink/20 accent-gold"
             />
             Remember me

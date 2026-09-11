@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,8 +36,11 @@ export function GoogleButton({
   label?: string;
 }) {
   const query = next ? `?next=${encodeURIComponent(next)}` : "";
+  // Native navigation (<a>, not next/link): this URL is an OAuth redirect endpoint,
+  // so a full browser navigation avoids the client-router fetch that fails with
+  // "Failed to fetch" if the dev server is recompiling or restarting mid-click.
   return (
-    <Link
+    <a
       href={`/api/auth/google/start${query}`}
       className={cn(
         "group flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-ink/12 bg-white text-sm font-semibold text-ink transition-all hover:border-ink/25 hover:bg-cream active:translate-y-px focus-visible:ring-4 focus-visible:ring-gold/20 focus-visible:outline-none",
@@ -47,7 +49,7 @@ export function GoogleButton({
     >
       <GoogleMark />
       {label}
-    </Link>
+    </a>
   );
 }
 
