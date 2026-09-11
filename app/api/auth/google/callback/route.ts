@@ -19,7 +19,9 @@ function redirectToSignIn(request: NextRequest, next?: string) {
   if (next && next.startsWith("/")) {
     url.searchParams.set("next", next);
   }
-  return NextResponse.redirect(url);
+  const response = NextResponse.redirect(url);
+  response.cookies.delete(GOOGLE_OAUTH_COOKIE_NAME);
+  return response;
 }
 
 export async function GET(request: NextRequest) {
@@ -28,15 +30,10 @@ export async function GET(request: NextRequest) {
   const errorParam = request.nextUrl.searchParams.get("error");
 
   if (errorParam) {
-    const response = redirectToSignIn(request);
-    response.cookies.delete(GOOGLE_OAUTH_COOKIE_NAME);
-    return response;
+    return redirectToSignIn(request);
   }
 
   const rawState = request.cookies.get(GOOGLE_OAUTH_COOKIE_NAME)?.value;
-
-  const response = NextResponse.next();
-  response.cookies.delete(GOOGLE_OAUTH_COOKIE_NAME);
 
   if (!code || !state || !rawState) {
     return redirectToSignIn(request);
@@ -157,8 +154,11 @@ export async function GET(request: NextRequest) {
         ? oauthState.next
         : "/";
 
-    return NextResponse.redirect(new URL(destination, request.nextUrl));
-  } catch {
+    const redirectResponse = NextResponse.redirect(new URL(destination, request.nextUrl));
+    redirectResponse.cookies.delete(GOOGLE_OAUTH_COOKIE_NAME);
+    return redirectResponse;
+  } catch (error) {
+    console.error("[Google OAuth Callback Error]:", error);
     return redirectToSignIn(request);
   }
 }

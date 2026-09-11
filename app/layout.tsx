@@ -54,9 +54,6 @@ export async function generateMetadata(): Promise<Metadata> {
     ...metadataDefaults,
     title: { default: title, template: `%s | ${title}` },
     openGraph: { ...metadataDefaults.openGraph, title },
-    icons: settings.navbarLogoUrl
-      ? { icon: [{ url: settings.navbarLogoUrl }], apple: [{ url: settings.navbarLogoUrl }] }
-      : { icon: [] },
   };
 }
 
@@ -68,9 +65,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${manrope.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F4EFE6] text-ink">
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-[#F4EFE6] text-ink">
         <Providers>
           <main className="flex-1">{children}</main>
           <Toaster richColors position="bottom-right" />
